@@ -2,8 +2,9 @@
 import { posts } from './index';
 
 // 학습 노트 데이터 목록을 조회하는 API
-function fetchPosts() {
-  return posts.get('/');
+function fetchPosts(username) {
+  console.log(username);
+  return posts.post('/v1/restaurant/list_rest', username);
 }
 
 // 특정 학습 노트를 조회하는 API

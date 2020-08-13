@@ -12,9 +12,9 @@
       <!-- 1 -->
       <template v-if="isUserLogin">
         <a href="javascript:;" @click="logoutUser" class="logout-button">
-          Logout
+          로그아웃
         </a>
-        <router-link to="/restaurant">내 가게 관리</router-link>
+        <router-link to="/restaurant">내 정보 관리</router-link>
         <router-link to="/download">앱 다운로드</router-link>
       </template>
       <!-- 2 -->
@@ -85,7 +85,7 @@ a.logo {
   width: 100%;
 }
 .logout-button {
-  font-size: 14px;
+  font-size: 18px;
 }
 a.router-link-exact-active {
   color: white;

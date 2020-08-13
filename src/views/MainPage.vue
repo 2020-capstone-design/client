@@ -13,7 +13,7 @@
       </ul>
     </div>
     <router-link to="/add" class="create-button">
-      <i class="ion-md-add"></i>
+      <p>가게 등록</p>
     </router-link>
   </div>
 </template>
@@ -37,9 +37,12 @@ export default {
   methods: {
     async fetchData() {
       this.isLoading = true;
-      const { data } = await fetchPosts();
+      const username = {
+        username: this.$store.state.username,
+      };
+      const { data } = await fetchPosts(username);
       this.isLoading = false;
-      this.postItems = data.posts;
+      this.postItems = data.restaurant_name;
     },
   },
   created() {
