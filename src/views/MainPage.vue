@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main list-container contents">
-      <h1 class="page-header">오늘 뭐먹지 main</h1>
+      <h1 class="page-header">회원님의 가게목록</h1>
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
         <PostListItem
@@ -37,12 +37,14 @@ export default {
   methods: {
     async fetchData() {
       this.isLoading = true;
-      const username = {
+      const { username } = {
         username: this.$store.state.username,
       };
       const { data } = await fetchPosts(username);
       this.isLoading = false;
-      this.postItems = data.restaurant_name;
+      console.log('data', data);
+      this.postItems = data.restaurants;
+      console.log('restaurant', data.restaurants);
     },
   },
   created() {

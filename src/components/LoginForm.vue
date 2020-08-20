@@ -5,21 +5,17 @@
         <div>
           <label for="username">id</label>
           <input id="username" type="text" v-model="username" />
-          <p class="validation-text">
+          <!-- <p class="validation-text">
             <span class="warning" v-if="!isUsernameValid && username">
               Please enter an email address
             </span>
-          </p>
+          </p> -->
         </div>
         <div>
           <label for="password">password</label>
-          <input id="password" type="text" v-model="password" />
+          <input id="password" type="password" v-model="password" />
         </div>
-        <button
-          :disabled="!isUsernameValid || !password"
-          type="submit"
-          class="btn"
-        >
+        <button :disabled="!password" type="submit" class="btn">
           로그인
         </button>
       </form>

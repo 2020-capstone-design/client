@@ -40,11 +40,13 @@ export default {
   },
   methods: {
     logoutUser() {
-      this.$store.commit('clearUsername');
-      this.$store.commit('clearToken');
-      deleteCookie('til_auth');
-      deleteCookie('til_user');
-      this.$router.push('/login');
+      if (confirm('로그아웃 하시겠습니까?')) {
+        this.$store.commit('clearUsername');
+        this.$store.commit('clearToken');
+        deleteCookie('til_auth');
+        deleteCookie('til_user');
+        this.$router.push('/login');
+      }
     },
   },
 };
@@ -59,7 +61,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: green;
+  background-color: #0fa956;
   z-index: 2;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05);
 }

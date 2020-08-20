@@ -4,7 +4,7 @@ import { posts } from './index';
 // 학습 노트 데이터 목록을 조회하는 API
 function fetchPosts(username) {
   console.log(username);
-  return posts.post('/v1/restaurant/list_rest', username);
+  return posts.get(`/v1/restaurant/list_restaurant/${username}`);
 }
 
 // 특정 학습 노트를 조회하는 API
@@ -12,8 +12,8 @@ function fetchPost(postId) {
   return posts.get(postId);
 }
 
-// 학습 노트 데이터를 생성하는 API
-function createPost(postData) {
+// 가게 데이터를 생성하는 API
+function createRestaurant(postData) {
   return posts.post('/v1/restaurant/insert_restaurant', postData);
 }
 
@@ -27,4 +27,4 @@ function editPost(postId, postData) {
   return posts.put(postId, postData);
 }
 
-export { fetchPosts, fetchPost, createPost, deletePost, editPost };
+export { fetchPosts, fetchPost, createRestaurant, deletePost, editPost };

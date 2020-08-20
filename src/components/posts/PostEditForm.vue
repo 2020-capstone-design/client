@@ -1,6 +1,6 @@
 <template>
   <div class="contents">
-    <h1 class="page-header">Edit Post</h1>
+    <h1 class="page-header">가게 정보 수정</h1>
     <div class="form-wrapper">
       <form class="form" @submit.prevent="submitForm">
         <div>
@@ -9,7 +9,7 @@
         </div>
         <div>
           <label for="contents">Contents:</label>
-          <textarea id="contents" type="text" rows="5" v-model="contents" />
+          <textarea id="contents" type="text" v-model="contents" />
           <p
             v-if="!isContentsValid"
             class="validation-text warning isContentTooLong"
