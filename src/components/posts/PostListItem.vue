@@ -45,7 +45,11 @@ export default {
   },
   methods: {
     async deleteItem() {
-      if (confirm('등록된 가게를 삭제하시겠습니까?')) {
+      if (
+        confirm(
+          '해당 가게를 삭제할 경우, 해당 가게와 관련된 정보들이 삭제됩니다.\n삭제하시겠습니까?',
+        )
+      ) {
         console.log('restaurantnum', this.postItem.restaurant_num);
 
         await deletePost(this.postItem.restaurant_num);

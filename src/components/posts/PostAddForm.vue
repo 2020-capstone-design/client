@@ -9,12 +9,11 @@
         enctype="multipart/form-data"
       >
         <div>
-          <label for="title">*가게명</label>
+          <label for="restaurant_name">*가게명</label>
           <input
-            id="title"
-            type="text"
-            v-model="title"
-            v-validate="'required'"
+            id="restaurant_name"
+            type="restaurant_name"
+            v-model="restaurant_name"
           />
         </div>
         <div>
@@ -53,9 +52,9 @@
           <input
             id="logo"
             type="file"
-            v-on:change="fileSelector()"
             ref="logo"
-            accept=".jpg, .jpeg, .png"
+            accept="image/*"
+            v-on:change="fileSelector()"
           />
         </div>
         <div>
@@ -105,13 +104,13 @@ import { createRestaurant } from '@/api/posts';
 export default {
   data() {
     return {
-      title: '',
+      restaurant_name: '',
       phone: '',
       location: '',
       university: '',
       intro: '',
       img: '',
-      logo: [],
+      logo: '',
       category: '',
       main_menu1: '',
       main_menu2: '',
@@ -130,23 +129,27 @@ export default {
   methods: {
     async submitForm() {
       try {
+        const formData = new FormData();
+        formData.append('restaurant_name', this.restaurant_name);
+        formData.append('restaurant_phone', this.phone);
+        formData.append('restaurant_loc', this.location);
+        formData.append('restaurant_university', this.university);
+        formData.append('restaurant_intro', this.restaurant_intro);
+        formData.append('restaurant_img', this.restaurant_img);
+        formData.append('logo', this.logo);
+        formData.append('restaurant_category', this.category);
+        formData.append('restaurant_main_menu1', this.category);
+        formData.append('restaurant_main_menu2', this.main_menu2);
+        formData.append('restaurant_operating_time', this.operating_time);
+        formData.append('restaurant_closed_days', this.closed_days);
+        formData.append('restaurant_on_off', this.on_off);
+        formData.append('fk_owner_id', this.$store.state.username);
+        for (let key of formData.entries()) {
+          console.log(`${key}`);
+        }
+
         if (confirm('가게를 등록하시겠습니까?')) {
-          const response = await createRestaurant({
-            restaurant_name: this.title,
-            restaurant_phone: this.phone,
-            restaurant_loc: this.location,
-            restaurant_university: this.university,
-            restaurant_intro: this.intro,
-            restaurant_img: this.img,
-            restaurant_logo: this.logo,
-            restaurant_category: this.category,
-            restaurant_main_menu1: this.main_menu1,
-            restaurant_main_menu2: this.main_menu2,
-            restaurant_operating_time: this.operating_time,
-            restaurant_closed_days: this.closed_days,
-            restaurant_on_off: this.on_off,
-            fk_owner_id: this.$store.state.username,
-          });
+          const response = await createRestaurant(formData);
           this.$router.push('/main');
           console.log(response);
         }

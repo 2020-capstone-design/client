@@ -184,11 +184,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.form-wrapper .form {
-  width: 100%;
-}
-.btn {
-  color: white;
-}
-</style>
+<style scoped></style>

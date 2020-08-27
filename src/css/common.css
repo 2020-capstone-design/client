@@ -15,6 +15,7 @@ body {
 h1 {
 	text-align: center;
 	font-weight: 100;
+	
 }
 
 /*--- LINK ---*/
@@ -53,7 +54,7 @@ a:hover {
   background: white;
   -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 15px 15px;
 }
 .form-wrapper.form-wrapper-sm {
@@ -64,8 +65,9 @@ a:hover {
   padding: 0px 0 20px;
 }
 .form {
-	width: 460px;
+	width: 470px;
 	height: 100%;
+	border-radius: 1px;
 }
 .form .validation-text {
 	margin-top: -0.5rem;
@@ -75,6 +77,9 @@ a:hover {
 	flex-direction: row-reverse;
 	justify-content: space-between;
 }
+.form-wrapper .form {
+	width: 100%;
+  }
 .form label {
   width: 100%;
   display: block;
@@ -84,13 +89,15 @@ a:hover {
 }
 .form input,
 .form textarea {
-  font-family: inherit;
-  font-size: 100%;
-  width: 100%;
-  border: 1px solid #dae1e7;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-  padding: 0.5rem 0.75rem;
-  margin-bottom: 1rem;
+	font-family: inherit;
+	font-size: 100%;
+	width: 100%;
+	/* border: 1px solid #dae1e7;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.1); */
+	padding: 0.5rem 0.75rem;
+	margin-bottom: 1rem;
+	border-bottom: 2px solid #adadad;
+	/* box-shadow: 0 1px 0 0 #000; */
 }
 .form input.valid {
   border: 1px solid #21b314;
@@ -101,13 +108,41 @@ a:hover {
 .form div:nth-last-child(2) {
   margin-bottom: 0.5rem;
 }
-.btn {
+/*.btn {
   background: #0fa956;
   padding: 0.5rem 1.5rem;
   font-weight: 700;
-  border-radius: .25rem;
+  width: 100%;
+  border-radius: 30px;
   border: 0 solid #dae1e7;
+  color: white;
 }
+*/
+.btn {
+
+		/* background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+		padding: 0.5rem 1.5rem;
+		font-weight: 700;
+		border-radius: .25rem;
+		border: 0 solid #dae1e7; */
+		position:relative;
+		  left:50%;
+		  transform: translateX(-50%);
+		  margin-bottom: 40px;
+		  width: 100%;
+		  height: 50px;
+		  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+		  background-position: left;
+		  background-size: 200%;
+		  color:white;
+		  font-weight: bold;
+		border:none;
+		border-radius: 5px;  
+		  cursor:pointer;
+		  transition: 0.4s;
+		  display:inline;
+}
+
 .btn.disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -191,3 +226,4 @@ a:hover {
 	background: #0fa956;
 	border: 3px solid white;
 }
+

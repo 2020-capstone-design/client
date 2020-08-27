@@ -3,8 +3,13 @@
     <div class="form-wrapper form-wrapper-sm">
       <form @submit.prevent="submitForm" class="form">
         <div>
-          <label for="username">id</label>
-          <input id="username" type="text" v-model="username" />
+          <label for="username"></label>
+          <input
+            id="username"
+            type="text"
+            placeholder="아이디"
+            v-model="username"
+          />
           <!-- <p class="validation-text">
             <span class="warning" v-if="!isUsernameValid && username">
               Please enter an email address
@@ -12,8 +17,13 @@
           </p> -->
         </div>
         <div>
-          <label for="password">password</label>
-          <input id="password" type="password" v-model="password" />
+          <label for="password"></label>
+          <input
+            id="password"
+            type="password"
+            placeholder="패스워드"
+            v-model="password"
+          />
         </div>
         <button :disabled="!password" type="submit" class="btn">
           로그인
@@ -21,6 +31,9 @@
       </form>
       <p class="log">{{ logMessage }}</p>
     </div>
+    <span>
+      <p>아이디 찾기</p>
+    </span>
   </div>
 </template>
 
@@ -69,7 +82,7 @@ export default {
 </script>
 
 <style>
-.btn {
-  color: white;
+p {
+  font-size: 0.7em;
 }
 </style>

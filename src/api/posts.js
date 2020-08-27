@@ -14,7 +14,11 @@ function fetchPost(restaurant_num) {
 
 // 가게 데이터를 생성하는 API
 function createRestaurant(postData) {
-  return posts.post('/v1/restaurant/insert_restaurant', postData);
+  return posts.post('/v1/restaurant/insert_restaurant', postData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 }
 
 // 가게 데이터를 삭제하는 API
