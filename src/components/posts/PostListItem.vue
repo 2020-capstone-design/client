@@ -1,7 +1,7 @@
 <template>
   <li class="post-container">
-    <div @click="greet">
-      <div class="post-title">
+    <div>
+      <div class="post-title" @click="routeMenuPage">
         <i class="icon ion-ios-restaurant"></i>
         {{ postItem.restaurant_name }}
       </div>
@@ -20,7 +20,6 @@
         {{ postItem.restaurant_operating_time }}<br />
         <i class="icon ion-logo-closed-captioning"></i>
         {{ postItem.restaurant_closed_days }}<br />
-
         <b>메인 메뉴</b><br />
         {{ postItem.restaurant_main_menu1 }}
         {{ postItem.restaurant_main_menu2 }}
@@ -47,17 +46,23 @@ export default {
   methods: {
     async deleteItem() {
       if (confirm('등록된 가게를 삭제하시겠습니까?')) {
-        await deletePost(this.postItem._id);
+        console.log('restaurantnum', this.postItem.restaurant_num);
+
+        await deletePost(this.postItem.restaurant_num);
         this.$emit('refresh');
       }
       // console.log('deleted');
     },
     routeEditPage() {
-      const id = this.postItem._id;
-      this.$router.push(`/post/${id}`);
+      const restaurant_num = this.postItem.restaurant_num;
+      console.log('route', restaurant_num);
+      this.$router.push(`/post/${restaurant_num}`);
     },
-    greet() {
-      alert(this.postItem.restaurant_name);
+    routeMenuPage() {
+      if (confirm('해당 가게의 메뉴를 관리하시겠습니까?')) {
+        const restaurant_num = this.postItem.restaurant_num;
+        this.$router.push(`/menu/${restaurant_num}`);
+      }
     },
   },
 };
@@ -67,7 +72,11 @@ export default {
 b {
   color: #0fa956;
 }
+.post-title:hover {
+  color: #5caaef;
+}
+
 .post-container:hover {
-  color: #21b314;
+  color: #0fa956;
 }
 </style>

@@ -6,7 +6,7 @@
       <ul v-else>
         <PostListItem
           v-for="postItem in postItems"
-          :key="postItem._id"
+          :key="postItem.restaurant_num"
           :postItem="postItem"
           @refresh="fetchData"
         ></PostListItem>

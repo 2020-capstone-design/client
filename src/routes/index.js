@@ -32,8 +32,18 @@ const router = new VueRouter({
       meta: { auth: true },
     },
     {
-      path: '/post/:id',
+      path: '/post/:restaurant_num',
       component: () => import('@/views/PostEditPage.vue'),
+      meta: { auth: true },
+    },
+    {
+      path: '/menu/:restaurant_num',
+      component: () => import('@/views/MenuPage.vue'),
+      meta: { auth: true },
+    },
+    {
+      path: '/member/',
+      component: () => import('@/views/MemberPage.vue'),
       meta: { auth: true },
     },
     {

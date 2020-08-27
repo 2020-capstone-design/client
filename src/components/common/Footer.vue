@@ -10,9 +10,9 @@ export default {};
 
 <style>
 .footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  height: 100px;
-  bottom: 0px;
-  position: relative;
+  height: 2.5rem;
 }
 </style>
