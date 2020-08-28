@@ -48,16 +48,6 @@
           </p>
         </div>
         <div>
-          <label for="restaurant_logo">가게로고</label>
-          <input
-            id="logo"
-            type="file"
-            v-on:change="fileSelector()"
-            ref="logo"
-            accept=".jpg, .jpeg, .png"
-          />
-        </div>
-        <div>
           <label for="restaurant_category">*가게 카테고리</label>
           <select id="category" type="text" v-model="restaurant_category">
             <option value="한식">한식</option>
@@ -119,7 +109,6 @@ export default {
       restaurant_university: '',
       restaurant_intro: '',
       restaurant_img: '',
-      restaurant_logo: '',
       restaurant_category: '',
       restaurant_main_menu1: '',
       restaurant_main_menu2: '',
@@ -145,7 +134,6 @@ export default {
           restaurant_university: this.restaurant_university,
           restaurant_intro: this.restaurant_intro,
           restaurant_img: this.restaurant_img,
-          restaurant_logo: this.restaurant_logo,
           restaurant_category: this.restaurant_category,
           restaurant_main_menu1: this.restaurant_main_menu1,
           restaurant_main_menu2: this.restaurant_main_menu2,
@@ -172,7 +160,6 @@ export default {
     this.restaurant_university = data.restaurant.restaurant_university;
     this.restaurant_intro = data.restaurant.restaurant_intro;
     this.restaurant_img = data.restaurant.restaurant_img;
-    this.restaurant_logo = data.restaurant.restaurant_logo;
     this.restaurant_category = data.restaurant.restaurant_category;
     this.restaurant_main_menu1 = data.restaurant.restaurant_main_menu1;
     this.restaurant_main_menu2 = data.restaurant.restaurant_main_menu2;

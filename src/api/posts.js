@@ -1,13 +1,13 @@
-// 학습 노트 조작과 관련된 CRUD API 함수 파일
+// 가게와 관련된 CRUD API 함수 파일
 import { posts } from './index';
 
-// 학습 가게 목록을 조회하는 API
+// 가게 목록을 조회하는 API
 function fetchPosts(username) {
   console.log(username);
   return posts.get(`/v1/restaurant/list_restaurants/${username}`);
 }
 
-// 특정 게게를 조회하는 API
+// 특정 가게를 조회하는 API
 function fetchPost(restaurant_num) {
   return posts.get(`/v1/restaurant/list_restaurant/${restaurant_num}`);
 }

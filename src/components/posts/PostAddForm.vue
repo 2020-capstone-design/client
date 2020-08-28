@@ -134,7 +134,7 @@ export default {
         formData.append('restaurant_phone', this.phone);
         formData.append('restaurant_loc', this.location);
         formData.append('restaurant_university', this.university);
-        formData.append('restaurant_intro', this.restaurant_intro);
+        formData.append('restaurant_intro', this.intro);
         formData.append('restaurant_img', this.restaurant_img);
         formData.append('logo', this.logo);
         formData.append('restaurant_category', this.category);
