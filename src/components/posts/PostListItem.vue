@@ -63,7 +63,8 @@ export default {
       this.$router.push(`/post/${restaurant_num}`);
     },
     routeMenuPage() {
-      if (confirm('해당 가게의 메뉴를 관리하시겠습니까?')) {
+      const restaurant_name = this.postItem.restaurant_name;
+      if (confirm(`가게 '${restaurant_name}'의 메뉴를 관리하시겠습니까?`)) {
         const restaurant_num = this.postItem.restaurant_num;
         this.$router.push(`/menu/${restaurant_num}`);
       }

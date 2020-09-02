@@ -2,9 +2,9 @@
 import { posts } from './index';
 
 // 가게 목록을 조회하는 API
-function fetchPosts(username) {
-  console.log(username);
-  return posts.get(`/v1/restaurant/list_restaurants/${username}`);
+function fetchPosts(ownerId) {
+  console.log(ownerId);
+  return posts.get(`/v1/restaurant/list_restaurants/${ownerId}`);
 }
 
 // 특정 가게를 조회하는 API

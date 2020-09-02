@@ -42,7 +42,7 @@ const router = new VueRouter({
       meta: { auth: true },
     },
     {
-      path: '/member/',
+      path: '/member',
       component: () => import('@/views/MemberPage.vue'),
       meta: { auth: true },
     },

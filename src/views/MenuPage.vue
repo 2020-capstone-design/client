@@ -22,6 +22,12 @@ export default {
     MenuListItem,
     LoadingSpinner,
   },
+  data() {
+    return {
+      postItems: [],
+      isLoading: false,
+    };
+  },
 };
 </script>
 

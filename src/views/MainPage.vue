@@ -37,10 +37,10 @@ export default {
   methods: {
     async fetchData() {
       this.isLoading = true;
-      const { username } = {
-        username: this.$store.state.username,
+      const { ownerId } = {
+        ownerId: this.$store.state.ownerId,
       };
-      const { data } = await fetchPosts(username);
+      const { data } = await fetchPosts(ownerId);
       this.isLoading = false;
       console.log('data', data);
       this.postItems = data.restaurants;

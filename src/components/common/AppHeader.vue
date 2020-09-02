@@ -4,7 +4,7 @@
       <router-link :to="logoLink" class="logo">
         오늘뭐먹지? 사장님광장
         <span v-if="isUserLogin">
-          {{ $store.state.username }}님 환영합니다.
+          {{ $store.state.ownerId }}님 환영합니다.
         </span>
       </router-link>
     </div>
@@ -42,10 +42,10 @@ export default {
   methods: {
     logoutUser() {
       if (confirm('로그아웃 하시겠습니까?')) {
-        this.$store.commit('clearUsername');
+        this.$store.commit('clearOwnerId');
         this.$store.commit('clearToken');
-        deleteCookie('til_auth');
-        deleteCookie('til_user');
+        deleteCookie('page_auth');
+        deleteCookie('page_user');
         this.$router.push('/login');
       }
     },
