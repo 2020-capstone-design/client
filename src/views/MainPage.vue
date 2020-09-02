@@ -13,7 +13,7 @@
       </ul>
     </div>
     <router-link to="/add" class="create-button">
-      <p>가게 등록</p>
+      <p class="create-button">가게 등록</p>
     </router-link>
   </div>
 </template>

@@ -74,13 +74,13 @@ export default {
 
 <style>
 b {
-  color: #0fa956;
+  color: #9ab4d4;
 }
 .post-title:hover {
   color: #5caaef;
 }
 
 .post-container:hover {
-  color: #0fa956;
+  color: #9ab4d4;
 }
 </style>

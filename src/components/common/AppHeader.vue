@@ -2,7 +2,7 @@
   <header>
     <div>
       <router-link :to="logoLink" class="logo">
-        오늘 뭐먹지? 사장님 광장
+        오늘뭐먹지? 사장님광장
         <span v-if="isUserLogin">
           {{ $store.state.username }}님 환영합니다.
         </span>
@@ -55,25 +55,24 @@ export default {
 
 <style scoped>
 .username {
-  color: white;
+  color: #9ab4d4;
 }
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #0fa956;
+  padding: 20px 20px;
   z-index: 2;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05);
 }
 a {
-  color: #dedede;
+  color: #9ab4d4;
+  font-family: 'Jua', sans-serif;
   font-size: 18px;
 }
 a.logo {
   font-size: 30px;
   font-weight: 900;
-  color: white;
+  color: #9ab4d4;
 }
 .logo > span {
   font-size: 14px;
