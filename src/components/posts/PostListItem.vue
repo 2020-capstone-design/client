@@ -2,7 +2,6 @@
   <li class="post-container">
     <div>
       <div class="post-title" @click="routeMenuPage">
-        <i class="icon ion-ios-restaurant"></i>
         {{ postItem.restaurant_name }}
       </div>
       <div class="post-contents">

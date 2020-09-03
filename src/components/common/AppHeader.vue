@@ -3,10 +3,10 @@
     <div>
       <router-link :to="logoLink" class="logo">
         오늘뭐먹지? 사장님광장
-        <span v-if="isUserLogin">
-          {{ $store.state.ownerId }}님 환영합니다.
-        </span>
       </router-link>
+      <span v-if="isUserLogin">
+        <small>{{ $store.state.ownerId }}님 환영합니다.</small></span
+      >
     </div>
     <div class="navigations">
       <!-- 1 -->

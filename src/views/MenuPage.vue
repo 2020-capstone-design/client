@@ -1,21 +1,24 @@
 <template>
   <div>
-    <h1 class="page-header">메뉴 리스트</h1>
-    <LoadingSpinner v-if="isLoading"></LoadingSpinner>
-    <ul v-else>
-      <MenuListItem
-        v-for="postItem in postItems"
-        :key="postItem.restaurant_num"
-        :postItem="postItem"
-        @refresh="fetchData"
-      ></MenuListItem>
-    </ul>
+    <div class="main list-container contents">
+      <h1 class="page-header">메뉴 리스트</h1>
+      <LoadingSpinner v-if="isLoading"></LoadingSpinner>
+      <ul v-else>
+        <MenuListItem
+          v-for="menuItem in menuItems"
+          :key="menuItem.menu_num"
+          :menuItem="menuItem"
+          @refresh="fetchData"
+        ></MenuListItem>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import MenuListItem from '@/components/MenuListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+import { fetchMenus } from '@/api/menus';
 
 export default {
   components: {
@@ -24,9 +27,25 @@ export default {
   },
   data() {
     return {
-      postItems: [],
-      isLoading: false,
+      menuItems: [],
+      isLoading: true,
     };
+  },
+  methods: {
+    async fetchData() {
+      const { restaurant_num } = {
+        restaurant_num: this.$route.params.restaurant_num,
+      };
+      console.log(restaurant_num);
+      const { data } = await fetchMenus(restaurant_num);
+      this.isLoading = false;
+      console.log('data', data);
+      this.menuItems = data.menus;
+      console.log('restaurant', data.menus);
+    },
+  },
+  created() {
+    this.fetchData();
   },
 };
 </script>

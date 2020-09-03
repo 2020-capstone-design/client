@@ -236,3 +236,13 @@ a:hover {
 	border: 3px solid white;
 }
 
+small {
+	font-family: 'Jua', sans-serif;
+}
+/* 메뉴 List */
+.menu-container {
+	padding-top: 13px;
+}
+.menu-container.sticky {
+	margin-top: 76px;
+}
