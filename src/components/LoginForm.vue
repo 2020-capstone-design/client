@@ -35,6 +35,11 @@
           LOGIN
         </button>
       </form>
+      <div class="findId">
+        <small><router-link to="/signup">아이디찾기</router-link></small>
+        <small><router-link to="/signup">비밀번호찾기</router-link></small>
+        <small><router-link to="/signup">회원가입</router-link></small>
+      </div>
       <p class="log">{{ logMessage }}</p>
     </div>
   </div>
@@ -89,5 +94,9 @@ export default {
 }
 .username {
   text-align: center;
+}
+.findId > small {
+  margin: 40px;
+  color: #adadad;
 }
 </style>

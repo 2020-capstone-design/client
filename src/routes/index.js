@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from '@/store/index';
-// import LoginPage from '@/views/LoginPage.vue';
-// import SignupPage from '@/views/SignupPage.vue';
 
 Vue.use(VueRouter);
 

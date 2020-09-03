@@ -4,6 +4,7 @@
       <h1 class="page-header">회원님의 가게목록</h1>
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
+        <MainCarousel></MainCarousel>
         <PostListItem
           v-for="postItem in postItems"
           :key="postItem.restaurant_num"
@@ -21,11 +22,13 @@
 <script>
 import PostListItem from '@/components/posts/PostListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+import MainCarousel from '@/components/MainCarousel.vue';
 import { fetchPosts } from '@/api/posts';
 
 export default {
   components: {
     PostListItem,
+    MainCarousel,
     LoadingSpinner,
   },
   data() {
