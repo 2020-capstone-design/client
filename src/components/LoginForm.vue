@@ -2,12 +2,18 @@
   <div class="contents">
     <div class="form-wrapper form-wrapper-sm">
       <form @submit.prevent="submitForm" class="form">
-        <div>
-          <label for="username"></label>
+        <div class="username">
+          <label for="username">
+            <img
+              src="https://image.flaticon.com/icons/svg/149/149071.svg"
+              width="100"
+              height="100"
+            />
+          </label>
           <input
             id="username"
             type="text"
-            placeholder="아이디"
+            placeholder="ID"
             v-model="username"
           />
           <!-- <p class="validation-text">
@@ -21,25 +27,21 @@
           <input
             id="password"
             type="password"
-            placeholder="패스워드"
+            placeholder="Password"
             v-model="password"
           />
         </div>
         <button :disabled="!password" type="submit" class="btn">
-          로그인
+          LOGIN
         </button>
       </form>
       <p class="log">{{ logMessage }}</p>
     </div>
-    <span>
-      <p>아이디 찾기</p>
-    </span>
   </div>
 </template>
 
 <script>
 import { validateEmail } from '@/utils/validation';
-
 export default {
   data() {
     return {
@@ -82,7 +84,10 @@ export default {
 </script>
 
 <style>
-p {
-  font-size: 0.7em;
+.btn {
+  color: white;
+}
+.username {
+  text-align: center;
 }
 </style>
