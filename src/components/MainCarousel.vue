@@ -13,7 +13,8 @@ export default {
     return {
       items: [
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+          src:
+            'https://user-images.githubusercontent.com/49308628/92195011-f1fb9500-eea6-11ea-8f67-a9e27b3bcf80.png',
         },
         {
           src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',

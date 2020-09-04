@@ -2,10 +2,10 @@
   <header>
     <div>
       <router-link :to="logoLink" class="logo">
-        오늘뭐먹지? 사장님광장
+        오늘 뭐먹지? 사장님 광장
       </router-link>
       <span v-if="isUserLogin">
-        <small>{{ $store.state.ownerId }}님 환영합니다.</small></span
+        <small>{{ $store.state.username }}님 환영합니다.</small></span
       >
     </div>
     <div class="navigations">
@@ -42,7 +42,7 @@ export default {
   methods: {
     logoutUser() {
       if (confirm('로그아웃 하시겠습니까?')) {
-        this.$store.commit('clearOwnerId');
+        this.$store.commit('clearUsername');
         this.$store.commit('clearToken');
         deleteCookie('page_auth');
         deleteCookie('page_user');

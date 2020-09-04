@@ -12,20 +12,20 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    ownerId: getUserFromCookie() || '',
+    username: getUserFromCookie() || '',
     token: getAuthFromCookie() || '',
   },
   getters: {
     isLogin(state) {
-      return state.ownerId !== '';
+      return state.username !== '';
     },
   },
   mutations: {
-    setOwnerId(state, ownerId) {
-      state.ownerId = ownerId;
+    setUsername(state, username) {
+      state.username = username;
     },
-    clearOwnerId(state) {
-      state.ownerId = '';
+    clearUsername(state) {
+      state.username = '';
     },
     setToken(state, token) {
       state.token = token;
@@ -39,9 +39,9 @@ export default new Vuex.Store({
       const { data } = await loginUser(userData);
       console.log('data.token', data.token);
       commit('setToken', data.token);
-      commit('setOwnerId', data.user.ownerId);
+      commit('setUsername', data.user.username);
       saveAuthToCookie(data.token);
-      saveUserToCookie(data.user.ownerId);
+      saveUserToCookie(data.user.username);
       return data;
     },
   },

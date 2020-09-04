@@ -24,7 +24,6 @@ import PostListItem from '@/components/posts/PostListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import MainCarousel from '@/components/MainCarousel.vue';
 import { fetchPosts } from '@/api/posts';
-
 export default {
   components: {
     PostListItem,
@@ -40,10 +39,10 @@ export default {
   methods: {
     async fetchData() {
       this.isLoading = true;
-      const { ownerId } = {
-        ownerId: this.$store.state.ownerId,
+      const { username } = {
+        username: this.$store.state.username,
       };
-      const { data } = await fetchPosts(ownerId);
+      const { data } = await fetchPosts(username);
       this.isLoading = false;
       console.log('data', data);
       this.postItems = data.restaurants;
