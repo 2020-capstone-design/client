@@ -138,7 +138,7 @@ export default {
         formData.append('restaurant_img', this.restaurant_img);
         formData.append('logo', this.logo);
         formData.append('restaurant_category', this.category);
-        formData.append('restaurant_main_menu1', this.category);
+        formData.append('restaurant_main_menu1', this.main_menu1);
         formData.append('restaurant_main_menu2', this.main_menu2);
         formData.append('restaurant_operating_time', this.operating_time);
         formData.append('restaurant_closed_days', this.closed_days);
