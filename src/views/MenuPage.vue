@@ -13,9 +13,6 @@
         ></MenuListItem>
       </ul>
     </div>
-    <router-link to="/add" class="create-button">
-      <p class="create-button">메뉴 추가</p>
-    </router-link>
   </div>
 </template>
 
