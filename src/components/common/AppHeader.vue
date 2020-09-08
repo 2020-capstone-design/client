@@ -14,7 +14,7 @@
         <a href="javascript:;" @click="logoutUser" class="logout-button">
           로그아웃
         </a>
-        <router-link to="/member">내 정보 관리</router-link>
+        <router-link to="/check_password">내 정보 관리</router-link>
         <router-link to="/download">앱 다운로드</router-link>
       </template>
       <!-- 2 -->

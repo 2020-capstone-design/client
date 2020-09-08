@@ -14,32 +14,7 @@
 </template>
 
 <script>
-export default {
-  data: () => ({
-    icons: [
-      {
-        name: 'mdi-github',
-        url: 'https://github.com/2020-capstone-design',
-        target: '_blank',
-      },
-      {
-        name: 'fab fa-github',
-        url: 'https://www.github.com/AfricanTurtles',
-        target: '_blank',
-      },
-      {
-        name: 'fab fa-linkedin',
-        url: 'https://www.linkedin.com/in/AfricanTurtles',
-        target: '_blank',
-      },
-      {
-        name: 'fab fa-instagram',
-        url: 'https://www.instagram.com/AfricanTurtles',
-        target: '_blank',
-      },
-    ],
-  }),
-};
+export default {};
 </script>
 
 <style>

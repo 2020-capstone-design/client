@@ -45,6 +45,11 @@ const router = new VueRouter({
       meta: { auth: true },
     },
     {
+      path: '/check_password',
+      component: () => import('@/views/CheckPasswordPage.vue'),
+      meta: { auth: true },
+    },
+    {
       path: '/download',
       component: () => import('@/views/Download.vue'),
     },

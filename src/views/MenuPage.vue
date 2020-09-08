@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div class="main list-container contents">
+    <div class="main menu-list-container contents">
       <h1 class="page-header">메뉴 리스트</h1>
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
+        <MenuAddForm v-on:addMenu="addMenu"></MenuAddForm>
         <MenuListItem
           v-for="menuItem in menuItems"
           :key="menuItem.menu_num"
@@ -12,23 +13,30 @@
         ></MenuListItem>
       </ul>
     </div>
+    <router-link to="/add" class="create-button">
+      <p class="create-button">메뉴 추가</p>
+    </router-link>
   </div>
 </template>
 
 <script>
 import MenuListItem from '@/components/MenuListItem.vue';
+import MenuAddForm from '@/components/MenuAddForm.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import { fetchMenus } from '@/api/menus';
+import { createMenu } from '@/api/menus';
 
 export default {
   components: {
     MenuListItem,
+    MenuAddForm,
     LoadingSpinner,
   },
   data() {
     return {
       menuItems: [],
       isLoading: true,
+      restaurant_num: this.$route.params.restaurant_num,
     };
   },
   methods: {
@@ -42,6 +50,10 @@ export default {
       console.log('data', data);
       this.menuItems = data.menus;
       console.log('restaurant', data.menus);
+    },
+    async addMenu(menuData) {
+      await createMenu(menuData);
+      this.$router.go();
     },
   },
   created() {

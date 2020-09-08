@@ -1,5 +1,5 @@
 <template>
-  <v-carousel :show-arrows="false" id="mainCarousel">
+  <v-carousel :show-arrows="false" id="mainCarousel" cycle>
     <v-carousel-item
       v-for="(item, i) in items"
       :key="i"
@@ -20,7 +20,7 @@ export default {
           src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
         },
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
         },
         {
           src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',

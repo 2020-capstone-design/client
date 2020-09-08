@@ -3,31 +3,45 @@
     <div class="form-wrapper form-wrapper-sm">
       <form @submit.prevent="submitForm" class="form">
         <div>
-          <label for="owner_id">id </label>
+          <label for="owner_id">아이디 </label>
           <input id="owner_id" type="text" v-model="owner_id" />
         </div>
         <div>
-          <label for="password">password </label>
-          <div><small>*영어와 숫자를 조합하시오.</small></div>
+          <label for="password">비밀번호 </label>
           <input
             id="password"
-            type="text"
-            placeholder="최대 15자"
-            maxlength="15"
+            type="password"
+            placeholder="최대 20자"
+            maxlength="20"
             v-model="password"
           />
         </div>
+        <!-- <div>
+          <label for="passwordCheck">비밀번호확인 </label>
+          <input
+            id="passwordCheck"
+            type="password"
+            placeholder="최대 20자"
+            maxlength="20"
+            v-model="passwordCheck"
+          />
+        </div> -->
         <div>
           <label for="name">이름 </label>
           <input id="name" type="text" v-model="name" />
         </div>
         <div>
           <label for="birthday">생년월일 </label>
-          <input id="birthday" type="text" v-model="birthday" />
+          <input id="birthday" type="date" v-model="birthday" />
         </div>
         <div>
           <label for="phone-number">휴대폰 번호 </label>
-          <input id="phonenumber" type="text" v-model="phonenumber" />
+          <input
+            id="phonenumber"
+            type="tel"
+            v-model="phonenumber"
+            placeholder="000-0000-0000"
+          />
         </div>
         <button type="submit" class="btn">가입 하기</button>
       </form>
@@ -54,21 +68,28 @@ export default {
   },
   methods: {
     async submitForm() {
-      const userData = {
-        owner_id: this.owner_id,
-        password: this.password,
-        name: this.name,
-        birthday: this.birthday,
-        phonenumber: this.phonenumber,
-      };
-      const { data } = await registerUser(userData);
-      console.log(data.name);
-      this.logMessage = `${data.name} 님이 가입되었습니다`;
-      this.initForm();
+      try {
+        const userData = {
+          owner_id: this.owner_id,
+          password: this.password,
+          name: this.name,
+          birthday: this.birthday,
+          phonenumber: this.phonenumber,
+        };
+        const { data } = await registerUser(userData);
+        console.log(data.name);
+        this.logMessage = `${data.name} 님이 가입되었습니다`;
+        this.$router.push('/main');
+        this.initForm();
+      } catch (error) {
+        console.log(error.response.data);
+        this.logMessage = error.response.data;
+      }
     },
     initForm() {
       this.owner_id = '';
       this.password = '';
+      this.passwordCheck = '';
       this.name = '';
       this.birthday = '';
       this.phonenumber = '';
