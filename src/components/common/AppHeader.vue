@@ -15,13 +15,13 @@
           로그아웃
         </a>
         <router-link to="/check_password">내 정보 관리</router-link>
-        <router-link to="/download">앱 다운로드</router-link>
+        <router-link to="/download">이용가이드</router-link>
       </template>
       <!-- 2 -->
       <template v-else>
         <router-link to="/login">로그인</router-link>
         <router-link to="/signup">회원가입</router-link>
-        <router-link to="/download">앱 다운로드</router-link>
+        <router-link to="/download">이용가이드</router-link>
       </template>
     </div>
   </header>
