@@ -18,6 +18,11 @@ h1 {
 	font-weight: 100;
 }
 
+h5 {
+	text-align: center;
+	margin: 50px;
+}
+
 /*--- LINK ---*/
 a {
   color: #364f6b;
@@ -194,6 +199,7 @@ a:hover {
 .post-contents {
 	height: 220px;
 	overflow-y: auto;
+	font-family: 'Jua', sans-serif;
 	font-size: 18px;
 }
 .post-time {

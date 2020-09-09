@@ -4,8 +4,10 @@
       <v-card class="flex" flat tile>
         <v-row align="center">
           <v-card-text class="py-2 white--text text-center">
-            &copy;2020 —
-            <a href="https://github.com/2020-capstone-design">Capstone Team</a>
+            <b></b>
+            <a href="https://github.com/2020-capstone-design"
+              >&copy; Capstone Team</a
+            >
           </v-card-text>
         </v-row>
       </v-card></v-footer

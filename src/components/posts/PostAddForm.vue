@@ -17,7 +17,7 @@
           />
         </div>
         <div>
-          <label for="phone">가게 번호</label>
+          <label for="phone">가게 전화 번호</label>
           <input id="phone" type="text" v-model="phone" />
         </div>
         <div>

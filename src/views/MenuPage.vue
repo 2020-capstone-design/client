@@ -2,9 +2,12 @@
   <div>
     <div class="main menu-list-container contents">
       <h1 class="page-header">메뉴 리스트</h1>
+      <h5>
+        <router-link to="/download">앱에서 어떻게 보이나요? (클릭)</router-link>
+      </h5>
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
-        <MenuAddForm v-on:addMenu="addMenu"></MenuAddForm>
+        <MenuAddForm v-on:editMenu="editMenu"></MenuAddForm>
         <MenuListItem
           v-for="menuItem in menuItems"
           :key="menuItem.menu_num"
@@ -33,6 +36,7 @@ export default {
     return {
       menuItems: [],
       isLoading: true,
+      menu_num: '',
       restaurant_num: this.$route.params.restaurant_num,
     };
   },

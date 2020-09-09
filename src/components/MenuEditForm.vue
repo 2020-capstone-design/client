@@ -1,7 +1,7 @@
 <template>
   <div class="contents">
     <div class="form-wrapper">
-      <form class="form" @submit.prevent="submitAddForm">
+      <form class="form" @submit.prevent="submitEditForm">
         <div>
           <label for="menu_name">메뉴 이름</label>
           <input id="menu_name" type="text" v-model="menu_name" />
@@ -29,7 +29,7 @@
           <input id="menu_price" type="text" v-model="menu_price" />
         </div>
         <button type="submit" class="btn">
-          메뉴 등록
+          메뉴 정보 변경 완료
         </button>
       </form>
       <p class="log">

@@ -16,9 +16,13 @@ function fetchUserInfo(userId) {
   return instance.get(`v1/owner/owner_info/${userId}`);
 }
 
+function updateUser(userData) {
+  return instance.patch('v1/owner/update_owner_info', userData);
+}
+
 //회원탈퇴 API
 function deleteUser(userId) {
   return instance.delete(`v1/owner/delete_owner/${userId}`);
 }
 
-export { registerUser, loginUser, fetchUserInfo, deleteUser };
+export { registerUser, loginUser, fetchUserInfo, updateUser, deleteUser };

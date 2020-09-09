@@ -13,7 +13,7 @@
           <input id="restaurant_name" type="text" v-model="restaurant_name" />
         </div>
         <div>
-          <label for="restaurant_phone">가게 번호</label>
+          <label for="restaurant_phone">가게 전화 번호</label>
           <input id="phone" type="text" v-model="restaurant_phone" />
         </div>
         <div>
@@ -145,7 +145,7 @@ export default {
         this.$router.push('/main');
       } catch (error) {
         console.log(error);
-        this.logMessage = error;
+        this.logMessage = error.response.data.message;
       }
     },
   },

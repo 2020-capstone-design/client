@@ -1,23 +1,58 @@
 <template>
   <li class="post-container">
     <div>
-      <div class="post-title" @click="routeMenuPage">
+      <img
+        v-bind:src="`http://localhost:3000${postItem.restaurant_logo}`"
+        width="50px"
+        height="50px"
+        onerror="this.src='https://image.flaticon.com/icons/svg/685/685681.svg'"
+        class="post-logo"
+      />
+      <span class="post-title" @click="routeMenuPage">
         {{ postItem.restaurant_name }}
-      </div>
+      </span>
       <div class="post-contents">
-        <i class="icon ion-md-star"></i>
+        <img
+          src="https://image.flaticon.com/icons/svg/817/817382.svg"
+          width="27"
+          height="27"
+        />
         {{ postItem.restaurant_category }}<br />
-        <i class="icon ion-md-call"></i>
+        <img
+          src="https://image.flaticon.com/icons/svg/2933/2933239.svg"
+          width="22"
+          height="22"
+        />
         {{ postItem.restaurant_phone }}<br />
-        <i class="icon ion-md-home"></i>
+        <img
+          src="https://image.flaticon.com/icons/svg/148/148845.svg"
+          width="23"
+          height="23"
+        />
         {{ postItem.restaurant_loc }}<br />
-        <i class="icon ion-md-school"></i>
+        <img
+          src="https://image.flaticon.com/icons/svg/3094/3094248.svg"
+          width="23"
+          height="23"
+        />
         {{ postItem.restaurant_university }}<br />
-        <i class="icon ion-ios-alarm"></i>
+        <img
+          src="https://image.flaticon.com/icons/svg/134/134909.svg"
+          width="23"
+          height="23"
+        />
         {{ postItem.restaurant_intro }}<br />
-        <i class="icon ion-ios-time"></i>
+        <img
+          src="https://image.flaticon.com/icons/svg/714/714903.svg"
+          width="22"
+          height="22"
+        />
         {{ postItem.restaurant_operating_time }}<br />
-        <i class="icon ion-logo-closed-captioning"></i>
+        <img
+          src="https://image.flaticon.com/icons/svg/123/123392.svg"
+          width="21"
+          height="21"
+        />
         {{ postItem.restaurant_closed_days }}<br />
         <b>메인 메뉴</b><br />
         {{ postItem.restaurant_main_menu1 }}
@@ -34,7 +69,6 @@
 
 <script>
 import { deletePost } from '@/api/posts';
-
 export default {
   props: {
     postItem: {
@@ -50,7 +84,6 @@ export default {
         )
       ) {
         console.log('restaurantnum', this.postItem.restaurant_num);
-
         await deletePost(this.postItem.restaurant_num);
         this.$emit('refresh');
       }
@@ -75,12 +108,15 @@ export default {
 <style>
 b {
   color: #9ab4d4;
+  font-family: 'Jua', sans-serif;
 }
 .post-title:hover {
   color: #5caaef;
 }
-
 .post-container:hover {
   color: #9ab4d4;
+}
+.post-logo {
+  border-radius: 50%;
 }
 </style>

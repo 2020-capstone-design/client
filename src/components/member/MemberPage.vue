@@ -6,7 +6,7 @@
     <div class="form-wrapper">
       <form
         class="form"
-        @submit.prevent="submitForm"
+        @submit.prevent="submitEditForm"
         enctype="multipart/form-data"
       >
         <div>
@@ -36,8 +36,7 @@
 </template>
 
 <script>
-import { deleteUser } from '@/api/auth';
-import { fetchUserInfo } from '@/api/auth';
+import { fetchUserInfo, deleteUser, updateUser } from '@/api/auth';
 import { deleteCookie } from '@/utils/cookies';
 
 export default {
@@ -50,6 +49,25 @@ export default {
     };
   },
   methods: {
+    async submitEditForm() {
+      try {
+        const userData = {
+          username: this.$store.state.username,
+          name: this.name,
+          birth: this.birth,
+          phone: this.phone,
+        };
+        if (confirm('정보를 변강하시겠습니까?')) {
+          const response = await updateUser(userData);
+          console.log(response);
+          this.$router.go();
+          alert('성공적으로 변경되었습니다.');
+        }
+      } catch (error) {
+        console.log(error);
+        this.logMessage = error.response.data.message;
+      }
+    },
     async deleteMember() {
       if (confirm('계정을 삭제하시겠습니까?')) {
         try {

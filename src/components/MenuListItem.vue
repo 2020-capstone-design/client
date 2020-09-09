@@ -2,9 +2,8 @@
   <li class="post-container">
     <div class="menu-list">
       <span class="post-contents">
-        <b>{{ menuItem.menu_name }}</b> &nbsp;
-        {{ menuItem.menu_intro }}
-        {{ menuItem.menu_price }}&nbsp;
+        <b>{{ menuItem.menu_name }}</b> &nbsp; | {{ menuItem.menu_category }} |
+        {{ menuItem.menu_intro }} | {{ menuItem.menu_price }}원&nbsp;
         <i class="menu-icon ion-md-create" @click="routeEditPage"></i>&nbsp;
         <i class="menu-icon ion-md-trash" @click="deleteItem"></i>
       </span>
@@ -13,11 +12,33 @@
 </template>
 
 <script>
+import { deleteMenu } from '@/api/menus';
+
 export default {
   props: {
     menuItem: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    async deleteItem() {
+      try {
+        if (confirm('해당 메뉴를 삭제하시겠습니까?')) {
+          const res = await deleteMenu(this.menuItem.menu_num);
+          console.log(res);
+          this.$router.go();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async routeEditPage() {
+      try {
+        alert(this.menuItem.menu_num);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
