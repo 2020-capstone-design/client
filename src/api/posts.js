@@ -34,4 +34,18 @@ function editPost(restaurant_num, postData) {
   );
 }
 
-export { fetchPosts, fetchPost, createRestaurant, deletePost, editPost };
+function setOnOff(restaurant_num, isOpen) {
+  return posts.patch('/v1/restaurant/update_restaurant_isOpen', {
+    restaurant_num,
+    isOpen,
+  });
+}
+
+export {
+  fetchPosts,
+  fetchPost,
+  createRestaurant,
+  deletePost,
+  editPost,
+  setOnOff,
+};

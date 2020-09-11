@@ -52,8 +52,14 @@
           <select id="category" type="text" v-model="restaurant_category">
             <option value="한식">한식</option>
             <option value="분식">분식</option>
-            <option value="중식">중식</option>
-            <option value="중식">일식</option>
+            <option value="중국집">중국집</option>
+            <option value="일식/돈까스">일식/돈까스</option>
+            <option value="족발/보쌈">족발/보쌈</option>
+            <option value="피자">피자</option>
+            <option value="치킨">치킨</option>
+            <option value="분식">패스트푸드</option>
+            <option value="찜/탕">찜/탕</option>
+            <option value="카페&디저트">카페&디저트</option>
           </select>
         </div>
         <div>

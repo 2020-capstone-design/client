@@ -1,13 +1,30 @@
 <template>
   <li class="post-container">
     <div>
-      <img
-        v-bind:src="`http://localhost:3000${postItem.restaurant_logo}`"
-        width="50px"
-        height="50px"
-        onerror="this.src='https://image.flaticon.com/icons/svg/685/685681.svg'"
-        class="post-logo"
-      />
+      <div v-if="postItem.restaurant_on_off === false">
+        <img
+          src="https://www.flaticon.com/svg/static/icons/svg/1234/1234190.svg"
+          width="50px"
+          height="50px"
+          @click="setOn"
+        />
+      </div>
+      <div v-else>
+        <img
+          src="https://www.flaticon.com/svg/static/icons/svg/1234/1234189.svg"
+          width="50px"
+          height="50px"
+          @click="setOff"
+        />
+      </div>
+      <span>
+        <img
+          v-bind:src="`http://localhost:3000${postItem.restaurant_logo}`"
+          width="30px"
+          height="30px"
+          onerror="this.src='https://image.flaticon.com/icons/svg/685/685681.svg'"
+          class="post-logo"
+      /></span>
       <span class="post-title" @click="routeMenuPage">
         {{ postItem.restaurant_name }}
       </span>
@@ -68,7 +85,7 @@
 </template>
 
 <script>
-import { deletePost } from '@/api/posts';
+import { deletePost, setOnOff } from '@/api/posts';
 export default {
   props: {
     postItem: {
@@ -99,6 +116,24 @@ export default {
       if (confirm(`가게 '${restaurant_name}'의 메뉴를 관리하시겠습니까?`)) {
         const restaurant_num = this.postItem.restaurant_num;
         this.$router.push(`/menu/${restaurant_num}`);
+      }
+    },
+    async setOff() {
+      const restaurant_name = this.postItem.restaurant_name;
+      if (confirm(`가게 '${restaurant_name}'를 마감하시겠습니까? `)) {
+        try {
+          await setOnOff(this.postItem.restaurant_num, false);
+          this.postItem.restaurant_on_off = false;
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    },
+    async setOn() {
+      const restaurant_name = this.postItem.restaurant_name;
+      if (confirm(`가게 '${restaurant_name}'를 오픈하시겠습니까? `)) {
+        await setOnOff(this.postItem.restaurant_num, true);
+        this.postItem.restaurant_on_off = true;
       }
     },
   },
