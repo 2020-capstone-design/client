@@ -34,6 +34,16 @@ function editPost(restaurant_num, postData) {
   );
 }
 
+//가게 로고 변경 API
+function editLogo(logoData) {
+  return posts.patch('/v1/restaurant/update_restaurant_logo', logoData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+}
+
+//가게 오픈/마감 정보 수정 API
 function setOnOff(restaurant_num, isOpen) {
   return posts.patch('/v1/restaurant/update_restaurant_isOpen', {
     restaurant_num,
@@ -47,5 +57,6 @@ export {
   createRestaurant,
   deletePost,
   editPost,
+  editLogo,
   setOnOff,
 };

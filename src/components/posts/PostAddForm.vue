@@ -165,7 +165,6 @@ export default {
       }
     },
     fileSelector() {
-      console.log('여기', this.$refs);
       this.logo = this.$refs.logo.files[0];
       console.log('this.logo', this.logo);
     },

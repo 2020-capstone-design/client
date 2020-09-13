@@ -1,5 +1,5 @@
 <template>
-  <div>이용가이드 등록 예정</div>
+  <h1>이용가이드</h1>
 </template>
 
 <script>
