@@ -54,7 +54,7 @@
             type="file"
             ref="logo"
             accept="image/*"
-            v-on:change="fileSelector()"
+            v-on:change="fileSelector1()"
           />
         </div>
         <div>
@@ -73,12 +73,8 @@
           </select>
         </div>
         <div>
-          <label for="main_menu1">가게 메인메뉴1</label>
-          <input id="main_menu1" type="text" v-model="main_menu1" />
-        </div>
-        <div>
-          <label for="main_menu2">가게 메인메뉴2</label>
-          <input id="main_menu2" type="text" v-model="main_menu2" />
+          <label for="main_menu">가게 메인메뉴</label>
+          <input id="main_menu" type="text" v-model="main_menu" />
         </div>
         <div>
           <label for="operating_time">가게 운영 시간</label>
@@ -90,8 +86,62 @@
           />
         </div>
         <div>
+          <label for="restaurant_outside_image">가게 정면 사진</label>
+          <input
+            id="restaurant_outside_image"
+            type="file"
+            ref="restaurant_outside_image"
+            accept="image/*"
+            v-on:change="fileSelector2()"
+          />
+        </div>
+        <div>
+          <label for="restaurant_menu_image1">가게 음식 사진1</label>
+          <input
+            id="restaurant_menu_image1"
+            type="file"
+            ref="restaurant_menu_image1"
+            accept="image/*"
+            v-on:change="fileSelector3()"
+          />
+        </div>
+        <div>
+          <label for="restaurant_menu_image2">가게 음식 사진2</label>
+          <input
+            id="restaurant_menu_image2"
+            type="file"
+            ref="restaurant_menu_image2"
+            accept="image/*"
+            v-on:change="fileSelector4()"
+          />
+        </div>
+
+        <div>
           <label for="closed_days">가게 휴무일</label>
-          <input id="closed_days" type="text" v-model="closed_days" />
+          <input
+            id="closed_days"
+            type="text"
+            v-model="closed_days"
+            placeholder="예) 매주 화요일"
+          />
+        </div>
+        <div>
+          <label for="food_origin">재료 원산지</label>
+          <input
+            id="food_origin"
+            type="text"
+            v-model="food_origin"
+            placeholder="예)김치 - 국산"
+          />
+        </div>
+        <div>
+          <label for="break_time">브레이크 타임</label>
+          <input
+            id="break_time"
+            type="text"
+            v-model="break_time"
+            placeholder="예) 오후 3시~4시"
+          />
         </div>
         <button type="submit" class="btn">
           가게 등록
@@ -115,13 +165,16 @@ export default {
       location: '',
       university: '',
       intro: '',
-      img: '',
+      restaurant_outside_image: '',
       logo: '',
+      restaurant_menu_image1: '',
+      restaurant_menu_image2: '',
       category: '',
-      main_menu1: '',
-      main_menu2: '',
+      main_menu: '',
       operating_time: '',
       closed_days: '',
+      food_origin: '',
+      break_time: '',
       on_off: false,
 
       logMessage: '',
@@ -141,14 +194,20 @@ export default {
         formData.append('restaurant_loc', this.location);
         formData.append('restaurant_university', this.university);
         formData.append('restaurant_intro', this.intro);
-        formData.append('restaurant_img', this.restaurant_img);
         formData.append('logo', this.logo);
+        formData.append(
+          'restaurant_outside_image',
+          this.restaurant_outside_image,
+        );
+        formData.append('restaurant_menu_image1', this.restaurant_menu_image1);
+        formData.append('restaurant_menu_image2', this.restaurant_menu_image2);
         formData.append('restaurant_category', this.category);
-        formData.append('restaurant_main_menu1', this.main_menu1);
-        formData.append('restaurant_main_menu2', this.main_menu2);
+        formData.append('restaurant_main_menu', this.main_menu);
         formData.append('restaurant_operating_time', this.operating_time);
         formData.append('restaurant_closed_days', this.closed_days);
         formData.append('restaurant_on_off', this.on_off);
+        formData.append('restaurant_food_origin', this.food_origin);
+        formData.append('restaurant_break_time', this.break_time);
         formData.append('fk_owner_id', this.$store.state.username);
         for (let key of formData.entries()) {
           console.log(`${key}`);
@@ -157,16 +216,31 @@ export default {
         if (confirm('가게를 등록하시겠습니까?')) {
           const response = await createRestaurant(formData);
           this.$router.push('/main');
-          console.log(response);
+          console.log('response', response);
         }
       } catch (error) {
-        console.log(error.response.data.message);
-        this.logMessage = error.response.data.message;
+        console.log(error.response.data);
+        this.logMessage = error.response.data;
       }
     },
-    fileSelector() {
+    fileSelector1() {
       this.logo = this.$refs.logo.files[0];
       console.log('this.logo', this.logo);
+    },
+    fileSelector2() {
+      this.restaurant_outside_image = this.$refs.restaurant_outside_image.files[0];
+      console.log(
+        'this.restaurant_outside_image',
+        this.restaurant_outside_image,
+      );
+    },
+    fileSelector3() {
+      this.restaurant_menu_image1 = this.$refs.restaurant_menu_image1.files[0];
+      console.log('this.restaurant_menu_image1', this.restaurant_menu_image1);
+    },
+    fileSelector4() {
+      this.restaurant_menu_image2 = this.$refs.restaurant_menu_image2.files[0];
+      console.log('this.restaurant_menu_image2', this.restaurant_menu_image2);
     },
   },
 };

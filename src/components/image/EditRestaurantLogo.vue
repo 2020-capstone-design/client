@@ -1,14 +1,15 @@
 <template>
-  <div class="edit-logo" @refresh="fetchData">
+  <div class="edit-image-container">
     <h1 class="page-header">가게 로고 변경</h1>
     <img
-      v-bind:src="`http://localhost:3000${this.logo}`"
+      v-bind:src="`http://localhost:3000${this.data.restaurant_logo}`"
+      alt="이미지없음"
       width="200px"
       height="200px"
-      class="edit-logo-image"
+      class="edit-image"
     />
     <form
-      class="edit-logo-form"
+      class="edit-image-form"
       @submit.prevent="submitForm"
       enctype="multipart/form-data"
     >
@@ -21,7 +22,7 @@
           v-on:change="fileSelector()"
         />
       </div>
-      <button type="submit" class="logo-btn">
+      <button type="submit" class="submit-image-btn">
         가게 로고 이미지 등록
       </button>
     </form>
@@ -30,11 +31,18 @@
 </template>
 
 <script>
-import { editLogo, fetchPost } from '@/api/posts';
+import { editLogo } from '@/api/posts';
 export default {
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       logo: '',
+      restaurant_num: '',
       logMessage: '',
     };
   },
@@ -57,18 +65,6 @@ export default {
       this.logo = this.$refs.logo.files[0];
       console.log('this.logo', this.logo);
     },
-    async fetchData() {
-      this.isLoading = true;
-      const { restaurant_num } = {
-        restaurant_num: this.$route.params.restaurant_num,
-      };
-      const { data } = await fetchPost(restaurant_num);
-      this.logo = data.restaurant.restaurant_logo;
-    },
-  },
-  created() {
-    this.fetchData();
-    this.logo = this.$route.params.restaurant_logo;
   },
 };
 </script>
@@ -77,15 +73,18 @@ export default {
 #logo {
   border: 5px;
 }
-.edit-logo-image {
+.edit-image-container {
+  text-align: center;
+}
+.edit-image {
   border: 5px solid #364f6b;
   border-radius: 50%;
   margin: 30px 0px 50px 0px;
 }
-.edit-logo-form {
+.edit-image-form {
   align-items: center;
 }
-.logo-btn {
+.submit-image-btn {
   color: floralwhite;
   background: #9ab4d4;
   font-weight: bold;

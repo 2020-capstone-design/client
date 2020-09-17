@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { createMenu } from '@/api/menus';
 export default {
   data() {
     return {
@@ -61,11 +62,13 @@ export default {
           menu_price: this.menu_price,
           fk_restaurant_num: this.$route.params.restaurant_num,
         };
-        this.$emit('addMenu', menuData);
+        console.log(menuData);
+        await createMenu(menuData);
         this.initForm();
+        this.$router.go();
       } catch (error) {
         console.log(error);
-        this.logMessage = error.response.data.message;
+        this.logMessage = error.response.data;
       }
     },
     initForm() {

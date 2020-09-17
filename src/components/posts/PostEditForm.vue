@@ -63,19 +63,11 @@
           </select>
         </div>
         <div>
-          <label for="restaurant_main_menu1">가게 메인메뉴1</label>
+          <label for="restaurant_main_menu">가게 메인메뉴</label>
           <input
-            id="restaurant_main_menu1"
+            id="restaurant_main_menu"
             type="text"
-            v-model="restaurant_main_menu1"
-          />
-        </div>
-        <div>
-          <label for="restaurant_main_menu2">가게 메인메뉴2</label>
-          <input
-            id="restaurant_main_menu2"
-            type="text"
-            v-model="restaurant_main_menu2"
+            v-model="restaurant_main_menu"
           />
         </div>
         <div>
@@ -92,6 +84,22 @@
             id="restaurant_closed_days"
             type="text"
             v-model="restaurant_closed_days"
+          />
+        </div>
+        <div>
+          <label for="restaurant_food_origin">재료 원산지</label>
+          <input
+            id="restaurant_food_origin"
+            type="text"
+            v-model="restaurant_food_origin"
+          />
+        </div>
+        <div>
+          <label for="restaurant_break_time">브레이크 타임</label>
+          <input
+            id="restaurant_break_time"
+            type="text"
+            v-model="restaurant_break_time"
           />
         </div>
         <button type="submit" class="btn">수정 완료</button>
@@ -114,12 +122,12 @@ export default {
       restaurant_loc: '',
       restaurant_university: '',
       restaurant_intro: '',
-      restaurant_img: '',
       restaurant_category: '',
-      restaurant_main_menu1: '',
-      restaurant_main_menu2: '',
+      restaurant_main_menu: '',
       restaurant_operating_time: '',
       restaurant_closed_days: '',
+      restaurant_food_origin: '',
+      restaurant_break_time: '',
       logMessage: '',
     };
   },
@@ -139,15 +147,14 @@ export default {
           restaurant_loc: this.restaurant_loc,
           restaurant_university: this.restaurant_university,
           restaurant_intro: this.restaurant_intro,
-          restaurant_img: this.restaurant_img,
           restaurant_category: this.restaurant_category,
-          restaurant_main_menu1: this.restaurant_main_menu1,
-          restaurant_main_menu2: this.restaurant_main_menu2,
+          restaurant_main_menu: this.restaurant_main_menu,
           restaurant_operating_time: this.restaurant_operating_time,
           restaurant_closed_days: this.restaurant_closed_days,
+          restaurant_food_origin: this.restaurant_food_origin,
+          restaurant_break_time: this.restaurant_break_time,
         });
         console.log('완료');
-
         this.$router.push('/main');
       } catch (error) {
         console.log(error);
@@ -165,14 +172,12 @@ export default {
     this.restaurant_loc = data.restaurant.restaurant_loc;
     this.restaurant_university = data.restaurant.restaurant_university;
     this.restaurant_intro = data.restaurant.restaurant_intro;
-    this.restaurant_img = data.restaurant.restaurant_img;
     this.restaurant_category = data.restaurant.restaurant_category;
-    this.restaurant_main_menu1 = data.restaurant.restaurant_main_menu1;
-    this.restaurant_main_menu2 = data.restaurant.restaurant_main_menu2;
+    this.restaurant_main_menu = data.restaurant.restaurant_main_menu;
     this.restaurant_operating_time = data.restaurant.restaurant_operating_time;
     this.restaurant_closed_days = data.restaurant.restaurant_closed_days;
-    console.log(this.restaurant_name);
-    console.log(this.restaurant_operationg_time);
+    this.restaurant_food_origin = data.restaurant.restaurant_food_origin;
+    this.restaurant_break_time = data.restaurant.restaurant_break_time;
   },
 };
 </script>

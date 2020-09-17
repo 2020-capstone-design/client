@@ -43,6 +43,42 @@ function editLogo(logoData) {
   });
 }
 
+function editOusideImage(oustsideImageData) {
+  return posts.patch(
+    '/v1/restaurant/update_restaurant_outside_image',
+    oustsideImageData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    },
+  );
+}
+
+function editMenuImage1(menuImage1) {
+  return posts.patch(
+    '/v1/restaurant/update_restaurant_menu_image1',
+    menuImage1,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    },
+  );
+}
+
+function editMenuImage2(menuImage2) {
+  return posts.patch(
+    '/v1/restaurant/update_restaurant_menu_image2',
+    menuImage2,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    },
+  );
+}
+
 //가게 오픈/마감 정보 수정 API
 function setOnOff(restaurant_num, isOpen) {
   return posts.patch('/v1/restaurant/update_restaurant_isOpen', {
@@ -58,5 +94,8 @@ export {
   deletePost,
   editPost,
   editLogo,
+  editOusideImage,
+  editMenuImage1,
+  editMenuImage2,
   setOnOff,
 };

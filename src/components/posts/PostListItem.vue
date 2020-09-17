@@ -1,7 +1,7 @@
 <template>
   <li class="post-container">
     <div>
-      <div v-if="postItem.restaurant_on_off === false">
+      <div v-if="postItem.restaurant_isOpen === false">
         <img
           src="https://www.flaticon.com/svg/static/icons/svg/1234/1234190.svg"
           width="50px"
@@ -37,44 +37,47 @@
         />
         {{ postItem.restaurant_category }}<br />
         <img
-          src="https://user-images.githubusercontent.com/49308628/92916064-21427100-f468-11ea-8e33-34e84386761f.png"
+          src="https://user-images.githubusercontent.com/49308628/93172625-31a76400-f766-11ea-87b8-9f0c5c381f07.png"
           width="22"
           height="22"
         />
         {{ postItem.restaurant_phone }}<br />
         <img
-          src="https://user-images.githubusercontent.com/49308628/92915865-ef310f00-f467-11ea-977d-7c608b4dd99b.png"
+          src="https://user-images.githubusercontent.com/49308628/93172564-1177a500-f766-11ea-9df9-49137bca8209.png"
           width="23"
           height="23"
         />
         {{ postItem.restaurant_loc }}<br />
         <img
-          src="https://user-images.githubusercontent.com/49308628/92915990-0ec83780-f468-11ea-8922-51b9d0c58520.png"
+          src="https://user-images.githubusercontent.com/49308628/93172581-1b010d00-f766-11ea-92a3-ae148a5dbb49.png"
           width="23"
           height="23"
         />
         {{ postItem.restaurant_university }}<br />
         <img
-          src="https://user-images.githubusercontent.com/49308628/92915765-d7598b00-f467-11ea-9972-72cdbe5343f4.png"
+          src="https://user-images.githubusercontent.com/49308628/93172597-25bba200-f766-11ea-9c6b-6e1717090b06.png"
           width="23"
           height="23"
         />
         {{ postItem.restaurant_intro }}<br />
         <img
-          src="https://user-images.githubusercontent.com/49308628/92915639-b8f38f80-f467-11ea-82ee-bc4e5750cefb.png"
+          src="https://user-images.githubusercontent.com/49308628/93172530-01f85c00-f766-11ea-9483-2807e2609afb.png"
           width="22"
           height="22"
         />
         {{ postItem.restaurant_operating_time }}<br />
         <img
-          src="https://user-images.githubusercontent.com/49308628/92915418-85186a00-f467-11ea-92d1-fa0f8f8eea87.png"
+          src="https://user-images.githubusercontent.com/49308628/93172477-e68d5100-f765-11ea-8240-2310086bbf77.png"
           width="21"
           height="21"
         />
         {{ postItem.restaurant_closed_days }}<br />
         <b>메인 메뉴</b><br />
-        {{ postItem.restaurant_main_menu1 }}
-        {{ postItem.restaurant_main_menu2 }}
+        {{ postItem.restaurant_main_menu }}<br />
+        <b>원산지</b><br />
+        {{ postItem.restaurant_food_origin }}
+        <b>브레이크 타임</b><br />
+        {{ postItem.restaurant_break_time }}
       </div>
     </div>
     <div class="post-time">
@@ -135,7 +138,7 @@ export default {
       if (confirm(`가게 '${restaurant_name}'를 마감하시겠습니까? `)) {
         try {
           await setOnOff(this.postItem.restaurant_num, false);
-          this.postItem.restaurant_on_off = false;
+          this.postItem.restaurant_isOpen = false;
         } catch (error) {
           console.error(error);
         }
@@ -145,7 +148,7 @@ export default {
       const restaurant_name = this.postItem.restaurant_name;
       if (confirm(`가게 '${restaurant_name}'를 오픈하시겠습니까? `)) {
         await setOnOff(this.postItem.restaurant_num, true);
-        this.postItem.restaurant_on_off = true;
+        this.postItem.restaurant_isOpen = true;
       }
     },
   },

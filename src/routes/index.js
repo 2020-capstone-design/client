@@ -35,8 +35,8 @@ const router = new VueRouter({
       meta: { auth: true },
     },
     {
-      path: '/editRestaurantLogo/:restaurant_num&:restaurant_logo',
-      component: () => import('@/views/EditRestaurantLogo.vue'),
+      path: '/editImage/:restaurant_num&:restaurant_logo',
+      component: () => import('@/views/MainEditImage.vue'),
       name: 'logo',
       props: true,
       meta: { auth: true },

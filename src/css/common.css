@@ -285,6 +285,24 @@ small {
 }
 
 /*로고 변경페이지*/
-.edit-logo {
-	text-align: center;
+.edit-image-container {
+text-align: center;
+}
+.edit-image {
+border: 5px solid #364f6b;
+border-radius: 50%;
+margin: 30px 0px 50px 0px;
+}
+.edit-image-form {
+align-items: center;
+}
+.submit-image-btn {
+color: floralwhite;
+background: #9ab4d4;
+font-weight: bold;
+border: none;
+border-radius: 5px;
+width: 300px;
+height: 50px;
+margin: 50px;
 }

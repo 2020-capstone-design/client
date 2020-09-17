@@ -24,7 +24,6 @@ import MenuListItem from '@/components/MenuListItem.vue';
 import MenuAddForm from '@/components/MenuAddForm.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import { fetchMenus } from '@/api/menus';
-import { createMenu } from '@/api/menus';
 
 export default {
   components: {
@@ -51,10 +50,6 @@ export default {
       console.log('data', data);
       this.menuItems = data.menus;
       console.log('restaurant', data.menus);
-    },
-    async addMenu(menuData) {
-      await createMenu(menuData);
-      this.$router.go();
     },
   },
   created() {
