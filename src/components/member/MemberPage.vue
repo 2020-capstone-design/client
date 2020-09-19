@@ -11,7 +11,7 @@
       >
         <div>
           <label for="name">이름</label>
-          <input id="name" type="text" v-model="name" v-validate="'required'" />
+          <input id="name" type="text" v-model="name" />
         </div>
         <div>
           <label for="birth">생년월일</label>
@@ -29,8 +29,13 @@
         {{ logMessage }}
       </p>
     </div>
-    <div class="del-member-btn" @click="deleteMember">
-      회원 탈퇴
+    <div class="member-btn-container">
+      <span class="member-btn" @click="routeEditPassword">
+        비밀번호 변경
+      </span>
+      <span class="member-btn" @click="deleteMember">
+        회원 탈퇴
+      </span>
     </div>
   </div>
 </template>
@@ -42,6 +47,7 @@ import { deleteCookie } from '@/utils/cookies';
 export default {
   data() {
     return {
+      owner_id: '',
       name: '',
       birth: '',
       phone: '',
@@ -83,10 +89,16 @@ export default {
         }
       }
     },
+    routeEditPassword() {
+      console.log('test');
+      const owner_id = this.owner_id;
+      console.log('owner_id', owner_id);
+      this.$router.push(`/edit_password/${owner_id}`);
+    },
   },
   async created() {
     const { data } = await fetchUserInfo(this.$store.state.username);
-    console.log(data);
+    this.owner_id = data.user.owner_id;
     this.name = data.user.owner_name;
     this.birth = data.user.owner_birth;
     this.phone = data.user.owner_phone;
@@ -97,5 +109,15 @@ export default {
 <style>
 small {
   text-align: center;
+}
+.member-btn-container {
+  text-align: center;
+  margin: 20px;
+}
+.member-btn {
+  text-decoration: underline;
+  margin: 20px;
+  color: gray;
+  font-family: 'Jua', sans-serif;
 }
 </style>

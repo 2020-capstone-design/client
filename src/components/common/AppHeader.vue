@@ -1,30 +1,33 @@
 <template>
-  <header>
-    <div>
-      <router-link :to="logoLink" class="logo">
-        오늘 뭐먹지? 사장님 광장
-      </router-link>
-      <span v-if="isUserLogin">
-        <small>{{ $store.state.username }}님 환영합니다.</small></span
-      >
-    </div>
-    <div class="navigations">
-      <!-- 1 -->
-      <template v-if="isUserLogin">
-        <a href="javascript:;" @click="logoutUser" class="logout-button">
-          로그아웃
-        </a>
-        <router-link to="/check_password">내 정보 관리</router-link>
-        <router-link to="/download">이용가이드</router-link>
-      </template>
-      <!-- 2 -->
-      <template v-else>
-        <router-link to="/login">로그인</router-link>
-        <router-link to="/signup">회원가입</router-link>
-        <router-link to="/download">이용가이드</router-link>
-      </template>
-    </div>
-  </header>
+  <div id="header-wraper">
+    <header>
+      <div>
+        <router-link :to="logoLink">
+          <img
+            src="https://user-images.githubusercontent.com/49308628/93667273-909b0f00-fabf-11ea-8a46-a3ab2abb1b6e.png"
+            width="92"
+            height="92"
+          />
+        </router-link>
+      </div>
+      <div class="navigations">
+        <!-- 1 -->
+        <template v-if="isUserLogin">
+          <small>{{ $store.state.username }}님</small>
+          <a href="javascript:;" @click="logoutUser" class="logout-button">
+            로그아웃
+          </a>
+          <router-link to="/check_password">내 정보 관리</router-link>
+          <router-link to="/download">이용가이드</router-link>
+        </template>
+        <!-- 2 -->
+        <template v-else>
+          <router-link to="/login">로그인</router-link>
+          <router-link to="/download">이용가이드</router-link>
+        </template>
+      </div>
+    </header>
+  </div>
 </template>
 
 <script>
@@ -54,18 +57,23 @@ export default {
 </script>
 
 <style scoped>
+#header-wraper {
+  align-items: center;
+}
 .username {
   color: #9ab4d4;
 }
 header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
   z-index: 2;
+  background: #b4c7e7;
 }
+
 a {
-  color: #9ab4d4;
+  color: white;
   font-family: 'Jua', sans-serif;
   font-size: 18px;
 }
@@ -78,8 +86,12 @@ a.logo {
   font-size: 14px;
   font-weight: normal;
 }
-.navigations a {
+.navigations {
+  margin-top: 25px;
   margin-left: 10px;
+}
+.navigations a {
+  margin: 5px;
 }
 .fixed {
   position: fixed;
@@ -90,7 +102,7 @@ a.logo {
   font-size: 18px;
 }
 a.router-link-exact-active {
-  color: white;
+  color: #e1e153;
   font-weight: bold;
 }
 </style>

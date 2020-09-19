@@ -68,15 +68,27 @@
         {{ postItem.restaurant_operating_time }}<br />
         <img
           src="https://user-images.githubusercontent.com/49308628/93172477-e68d5100-f765-11ea-8240-2310086bbf77.png"
-          width="21"
-          height="21"
+          width="23"
+          height="23"
         />
         {{ postItem.restaurant_closed_days }}<br />
-        <b>메인 메뉴</b><br />
+        <img
+          src="https://user-images.githubusercontent.com/49308628/93583329-aab0f080-f9de-11ea-8bf7-8f93a78c17d8.png"
+          width="23"
+          height="23"
+        />
         {{ postItem.restaurant_main_menu }}<br />
-        <b>원산지</b><br />
-        {{ postItem.restaurant_food_origin }}
-        <b>브레이크 타임</b><br />
+        <img
+          src="https://user-images.githubusercontent.com/49308628/93583450-d7650800-f9de-11ea-87d9-8bbaa484a25c.png"
+          width="25"
+          height="25"
+        />
+        {{ postItem.restaurant_food_origin }}<br />
+        <img
+          src="https://user-images.githubusercontent.com/49308628/93583186-75a49e00-f9de-11ea-8271-c101534c0d11.png"
+          width="23"
+          height="23"
+        />
         {{ postItem.restaurant_break_time }}
       </div>
     </div>
@@ -108,7 +120,6 @@ export default {
         await deletePost(this.postItem.restaurant_num);
         this.$emit('refresh');
       }
-      // console.log('deleted');
     },
     routeEditPage() {
       const restaurant_num = this.postItem.restaurant_num;

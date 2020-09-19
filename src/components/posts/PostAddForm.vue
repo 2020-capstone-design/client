@@ -194,7 +194,7 @@ export default {
         formData.append('restaurant_loc', this.location);
         formData.append('restaurant_university', this.university);
         formData.append('restaurant_intro', this.intro);
-        formData.append('logo', this.logo);
+        formData.append('restaurant_logo', this.logo);
         formData.append(
           'restaurant_outside_image',
           this.restaurant_outside_image,

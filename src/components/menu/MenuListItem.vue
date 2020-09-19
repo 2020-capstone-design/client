@@ -55,7 +55,4 @@ b {
 .post-container:hover {
   color: #9ab4d4;
 }
-
-.menu-icon {
-}
 </style>

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import MenuListItem from '@/components/MenuListItem.vue';
-import MenuAddForm from '@/components/MenuAddForm.vue';
+import MenuListItem from '@/components/menu/MenuListItem.vue';
+import MenuAddForm from '@/components/menu/MenuAddForm.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import { fetchMenus } from '@/api/menus';
 

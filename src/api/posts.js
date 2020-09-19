@@ -3,7 +3,6 @@ import { posts } from './index';
 
 // 가게 목록을 조회하는 API
 function fetchPosts(username) {
-  console.log('ownerId', username);
   return posts.get(`/v1/restaurant/list_restaurants/${username}`);
 }
 

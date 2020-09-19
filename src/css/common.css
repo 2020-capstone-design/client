@@ -60,6 +60,7 @@ a:hover {
 }
 .form-wrapper {
   background: white;
+  width: 100%;
   -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
@@ -179,9 +180,8 @@ a:hover {
 }
 .list-container > ul > li {
 	position: relative;
-	flex-grow: 1;
-	width: 320px;
-	height: 350px;
+	width: 490px;
+	height: 450px;
 	margin: 7px;
 	padding: 10px 20px;
 	background: white;
@@ -196,8 +196,8 @@ a:hover {
 	color: #708098;
 }
 .post-contents {
-	height: 220px;
-	overflow-y: auto;
+	height: 300px;
+	overflow-y: scroll;
 	font-family: 'Jua', sans-serif;
 	font-size: 18px;
 }
@@ -253,13 +253,6 @@ small {
 }
 
 /*회원 탈퇴 */
-.del-member-btn {
-	margin: 50px 0 0 0;
-	text-align: center;
-	text-decoration: underline;
-	color: gray;
-	font-family: 'Jua', sans-serif;
-}
 
 /*메뉴 관리*/
 .menu-list-container {
@@ -279,6 +272,7 @@ small {
 	margin: 7px;
 	padding: 10px 20px;
 	background: white;
+	overflow: scroll;
 	box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
 	border-radius: 3px;
 	text-align: center;

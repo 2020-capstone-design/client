@@ -44,9 +44,7 @@ export default {
       };
       const { data } = await fetchPosts(username);
       this.isLoading = false;
-      console.log('data', data);
       this.postItems = data.restaurants;
-      console.log('restaurant', data.restaurants);
     },
   },
   created() {

@@ -14,10 +14,12 @@ const router = new VueRouter({
     {
       path: '/login',
       component: () => import('@/views/LoginPage.vue'),
+      meta: { auth: false },
     },
     {
       path: '/signup',
       component: () => import('@/views/SignupPage.vue'),
+      meta: { auth: false },
     },
     {
       path: '/main',
@@ -57,8 +59,19 @@ const router = new VueRouter({
       meta: { auth: true },
     },
     {
+      path: '/edit_password/:owner_id',
+      component: () => import('@/views/EditPasswordPage.vue'),
+      meta: { auth: true },
+    },
+    {
       path: '/download',
       component: () => import('@/views/Download.vue'),
+      meta: { auth: true },
+    },
+    {
+      path: '/hello/',
+      component: () => import('@/views/HelloPage.vue'),
+      meta: { auth: false },
     },
     {
       path: '*',
@@ -71,6 +84,11 @@ router.beforeEach((to, from, next) => {
   if (to.meta.auth && !store.getters.isLogin) {
     console.log('인증이 필요합니다.');
     next('/login');
+    return;
+  }
+  if (!to.meta.auth && store.getters.isLogin) {
+    console.log('로그인 되어있습니다.');
+    next('/main');
     return;
   }
   next();

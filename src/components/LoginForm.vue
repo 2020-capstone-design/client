@@ -16,11 +16,6 @@
             placeholder="ID"
             v-model="username"
           />
-          <!-- <p class="validation-text">
-            <span class="warning" v-if="!isUsernameValid && username">
-              Please enter an email address
-            </span>
-          </p> -->
         </div>
         <div>
           <label for="password"></label>
@@ -46,7 +41,6 @@
 </template>
 
 <script>
-import { validateEmail } from '@/utils/validation';
 export default {
   data() {
     return {
@@ -56,11 +50,6 @@ export default {
       // log
       logMessage: '',
     };
-  },
-  computed: {
-    isUsernameValid() {
-      return validateEmail(this.username);
-    },
   },
   methods: {
     async submitForm() {
@@ -75,6 +64,7 @@ export default {
         this.initForm();
       } catch (error) {
         // 에러 핸들링할 코드
+        console.log(error);
         console.log(error.response.data);
         this.logMessage = error.response.data;
         this.password = '';
