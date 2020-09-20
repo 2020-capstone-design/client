@@ -20,11 +20,6 @@
           <router-link to="/check_password">내 정보 관리</router-link>
           <router-link to="/download">이용가이드</router-link>
         </template>
-        <!-- 2 -->
-        <template v-else>
-          <router-link to="/login">로그인</router-link>
-          <router-link to="/download">이용가이드</router-link>
-        </template>
       </div>
     </header>
   </div>

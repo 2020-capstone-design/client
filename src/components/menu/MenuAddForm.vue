@@ -67,23 +67,15 @@ export default {
   methods: {
     async submitAddForm() {
       try {
-        const regex = /[^0-9]/;
         if (
           this.menu_name === '' ||
           this.menu_category === '' ||
-          this.menu_price === ''
+          this.menu_price === '' ||
+          this.isNumberValid === true
         ) {
-          this.logMessage =
-            '올바르지 않은 입력입니다. 빠진 부분이 있는지 확인해주세요.';
-          return;
-        } else if (!regex.test(this.menu_price)) {
-          this.logMessage = '메뉴 가격은 숫자만 입력가능합니다.';
-          return;
-        } else if (this.menu_intro.length > 100) {
-          this.logMessage = '메뉴 소개는 100자 이하로만 입력가능합니다.';
+          this.logMessage = '올바르지 않은 입력입니다. 다시 확인해주세요.';
           return;
         }
-
         const menuData = {
           menu_name: this.menu_name,
           menu_category: this.menu_category,
@@ -100,12 +92,12 @@ export default {
         this.logMessage = error.response.data;
       }
     },
-  },
-  initForm() {
-    this.menu_name = '';
-    this.menu_intro = '';
-    this.menu_price = '';
-    this.menu_category = '';
+    initForm() {
+      this.menu_name = '';
+      this.menu_intro = '';
+      this.menu_price = '';
+      this.menu_category = '';
+    },
   },
   computed: {
     isNumberValid() {

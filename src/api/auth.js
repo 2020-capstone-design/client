@@ -20,9 +20,20 @@ function updateUser(userData) {
   return instance.patch('v1/owner/update_owner_info', userData);
 }
 
+function updateUserPassword(userData) {
+  return instance.patch('v1/owner/update_owner_password', userData);
+}
+
 //회원탈퇴 API
 function deleteUser(userId) {
   return instance.delete(`v1/owner/delete_owner/${userId}`);
 }
 
-export { registerUser, loginUser, fetchUserInfo, updateUser, deleteUser };
+export {
+  registerUser,
+  loginUser,
+  fetchUserInfo,
+  updateUser,
+  updateUserPassword,
+  deleteUser,
+};

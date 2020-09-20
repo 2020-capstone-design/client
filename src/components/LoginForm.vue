@@ -24,6 +24,7 @@
             type="password"
             placeholder="Password"
             v-model="password"
+            autocomplete="false"
           />
         </div>
         <button :disabled="!password" type="submit" class="btn">
@@ -63,11 +64,15 @@ export default {
         this.$router.push('/main');
         this.initForm();
       } catch (error) {
-        // 에러 핸들링할 코드
-        console.log(error);
-        console.log(error.response.data);
-        this.logMessage = error.response.data;
-        this.password = '';
+        if (error.response) {
+          console.log(error.response.data);
+          this.logMessage = error.response.data;
+          this.password = '';
+        } else {
+          this.logMessage = '에러발생';
+          console.log(error);
+          this.password = '';
+        }
       }
     },
     initForm() {
