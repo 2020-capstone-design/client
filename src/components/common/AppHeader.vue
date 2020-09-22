@@ -5,8 +5,8 @@
         <router-link :to="logoLink">
           <img
             src="https://user-images.githubusercontent.com/49308628/93667273-909b0f00-fabf-11ea-8a46-a3ab2abb1b6e.png"
-            width="92"
-            height="92"
+            width="110"
+            height="110"
           />
         </router-link>
       </div>
@@ -53,16 +53,16 @@ export default {
 
 <style scoped>
 #header-wraper {
-  align-items: center;
+  text-align: center;
 }
 .username {
   color: #9ab4d4;
 }
 header {
-  display: flex;
+  display: inline-block;
   width: 100%;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
   z-index: 2;
   background: #b4c7e7;
 }
@@ -82,7 +82,7 @@ a.logo {
   font-weight: normal;
 }
 .navigations {
-  margin-top: 25px;
+  margin-top: 10px;
   margin-left: 10px;
 }
 .navigations a {

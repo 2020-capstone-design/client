@@ -7,7 +7,7 @@
       </h5>
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
-        <MenuAddForm v-on:editMenu="editMenu"></MenuAddForm>
+        <MenuAddForm></MenuAddForm>
         <MenuListItem
           v-for="menuItem in menuItems"
           :key="menuItem.menu_num"

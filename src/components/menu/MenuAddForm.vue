@@ -4,7 +4,12 @@
       <form class="form" @submit.prevent="submitAddForm">
         <div>
           <label for="menu_name">메뉴 이름</label>
-          <input id="menu_name" type="text" v-model="menu_name" />
+          <input
+            id="menu_name"
+            type="text"
+            v-model="menu_name"
+            maxlength="20"
+          />
         </div>
         <div>
           <label for="menu_category">메뉴 카테고리</label>
@@ -22,7 +27,12 @@
         </div>
         <div>
           <label for="menu_intro">메뉴 소개</label>
-          <input id="menu_intro" type="text" v-model="menu_intro" />
+          <input
+            id="menu_intro"
+            type="text"
+            v-model="menu_intro"
+            maxlength="101"
+          />
         </div>
         <p class="validation-text">
           <span class="warning" v-if="!isContentsValid && menu_intro">

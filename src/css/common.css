@@ -119,39 +119,23 @@ a:hover {
 .form div:nth-last-child(2) {
   margin-bottom: 0.5rem;
 }
-/*.btn {
-  background: #0fa956;
-  padding: 0.5rem 1.5rem;
-  font-weight: 700;
-  width: 100%;
-  border-radius: 30px;
-  border: 0 solid #dae1e7;
-  color: white;
-}
-*/
 .btn {
-
-		/* background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
-		padding: 0.5rem 1.5rem;
-		font-weight: 700;
-		border-radius: .25rem;
-		border: 0 solid #dae1e7; */
-		position:relative;
-		  left:50%;
-		  transform: translateX(-50%);
-		  margin-bottom: 40px;
-		  width: 100%;
-		  height: 50px;
-		  background-position: left;
-		  background-size: 200%;
-		  color:white;
-		  background: #9AB4D4;
-		  font-weight: bold;
-		border:none;
-		border-radius: 5px;  
-		  cursor:pointer;
-		  transition: 0.4s;
-		  display:inline;
+	position:relative;
+	left:50%;
+	transform: translateX(-50%);
+	margin-bottom: 40px;
+	width: 100%;
+	height: 50px;
+	background-position: left;
+	background-size: 200%;
+	color:white;
+	background: #9AB4D4;
+	font-weight: bold;
+	border:none;
+	border-radius: 5px;  
+	cursor:pointer;
+	transition: 0.4s;
+	display:inline;
 }
 
 .btn.disabled {

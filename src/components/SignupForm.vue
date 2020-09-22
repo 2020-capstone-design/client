@@ -50,7 +50,7 @@
           </span>
         </p>
         <div>
-          <label for="name">이름 </label>
+          <label for="name">*이름 </label>
           <input id="name" type="text" v-model="name" maxlength="20" />
         </div>
         <p class="validation-text">

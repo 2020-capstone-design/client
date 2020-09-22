@@ -12,8 +12,12 @@ function createMenu(menuData) {
   return posts.post('v1/menu/insert_menu', menuData);
 }
 
+function editMenu(menuData) {
+  return posts.put('v1/menu/update_menu', menuData);
+}
+
 function deleteMenu(menu_num) {
   return posts.delete(`v1/menu/delete_menu/${menu_num}`);
 }
 
-export { fetchMenus, fetchMenu, createMenu, deleteMenu };
+export { fetchMenus, fetchMenu, createMenu, editMenu, deleteMenu };
