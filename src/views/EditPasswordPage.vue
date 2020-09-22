@@ -10,7 +10,7 @@
         enctype="multipart/form-data"
       >
         <div>
-          <label for="oldPassword">기존 비밀번호</label>
+          <label for="oldPassword">현재 비밀번호</label>
           <input
             id="oldPassword"
             type="password"
