@@ -14,7 +14,17 @@
           <input type="text" v-model="menu_name" size="10" />
         </span>
         <span class="menuEdit-form-contents">
-          <input type="text" v-model="menu_category" size="10" />
+          <select
+            name="menu_category"
+            type="text"
+            v-model="menu_category"
+            id="menu-eidt-select"
+          >
+            <option value="메인메뉴" selected="selected">메인 메뉴</option>
+            <option value="세트메뉴">세트 메뉴</option>
+            <option value="사이드메뉴">사이드 메뉴</option>
+            <option value="음료">음료</option>
+          </select>
         </span>
         <span class="menuEdit-form-contents">
           <input type="text" v-model="menu_intro" size="30" />
@@ -22,18 +32,27 @@
         <span class="menuEdit-form-contents">
           <input type="text" v-model="menu_price" size="10" />
         </span>
+        <p class="validation-text">
+          <span class="warning" v-if="isNumberValid && menu_price">
+            숫자만 입력가능합니다.
+          </span>
+        </p>
         <span>
           <button type="submit" id="menu-edit-btn">
             메뉴 등록
           </button>
         </span>
       </form>
+      <p class="log">
+        {{ logMessage }}
+      </p>
     </div>
   </li>
 </template>
 
 <script>
 import { deleteMenu, editMenu } from '@/api/menus';
+import { chechNumber } from '@/utils/validation';
 
 export default {
   props: {
@@ -49,6 +68,7 @@ export default {
       menu_category: '',
       menu_intro: '',
       menu_price: '',
+      logMessage: '',
     };
   },
   methods: {
@@ -73,6 +93,15 @@ export default {
     },
     async submitEditForm() {
       try {
+        if (
+          this.menu_name === '' ||
+          this.menu_category === '' ||
+          this.menu_price === '' ||
+          this.isNumberValid === true
+        ) {
+          this.logMessage = '올바르지 않은 입력입니다. 다시 확인해주세요.';
+          return;
+        }
         const menuData = {
           menuNum: this.menu_num,
           newMenuName: this.menu_name,
@@ -102,6 +131,14 @@ export default {
     this.menu_intro = this.menuItem.menu_intro;
     this.menu_price = this.menuItem.menu_price;
   },
+  computed: {
+    isNumberValid() {
+      return chechNumber(this.menu_price);
+    },
+    isContentsValid() {
+      return this.menu_intro.length <= 100;
+    },
+  },
 };
 </script>
 
@@ -117,6 +154,7 @@ b {
   color: #9ab4d4;
 }
 .menuEdit-form-wrapper {
+  border-style: solid;
 }
 .menuEdit-form-contents {
   font-family: 'Jua', sans-serif;
