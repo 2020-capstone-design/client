@@ -14,6 +14,8 @@
             id="restaurant_name"
             type="restaurant_name"
             v-model="restaurant_name"
+            maxlength="40"
+            placeholder="최대 40자"
           />
         </div>
         <div>
@@ -22,7 +24,36 @@
         </div>
         <div>
           <label for="location">가게 위치</label>
-          <input id="location" type="text" v-model="location" />
+
+          <input
+            type="button"
+            value="우편번호 찾기"
+            class="버튼"
+            id="post-button"
+            @click="execDaumPostcode"
+          />
+          <div
+            ref="searchWindow"
+            :style="searchWindow"
+            style="border:1px solid;width:500px;margin:5px 0;position:relative"
+          >
+            <img
+              src="https://t1.daumcdn.net/postcode/resource/images/close.png"
+              id="btnFoldWrap"
+              style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
+              @click="searchWindow.display = 'none'"
+              alt="close"
+            />
+          </div>
+          <br />
+          <input type="text" v-model="address" placeholder="주소" />
+          <br />
+          <input
+            type="text"
+            v-model="extraAddress"
+            ref="extraAddress"
+            placeholder="상세주소"
+          />
         </div>
         <div>
           <label for="university">*가게 근처 대학교</label>
@@ -39,12 +70,18 @@
         </div>
         <div>
           <label for="intro">가게 소개</label>
-          <textarea id="intro" type="text" row="4" v-model="intro" />
+          <textarea
+            id="intro"
+            type="text"
+            row="4"
+            v-model="intro"
+            maxlength="401"
+          />
           <p
             v-if="!isContentsValid"
             class="validation-text warning isContentTooLong"
           >
-            Contents length must be less than 250
+            Contents length must be less than 400
           </p>
         </div>
         <div>
@@ -73,8 +110,13 @@
           </select>
         </div>
         <div>
-          <label for="main_menu">가게 메인메뉴</label>
-          <input id="main_menu" type="text" v-model="main_menu" />
+          <label for="main_menu">가게 대표메뉴</label>
+          <input
+            id="main_menu"
+            type="text"
+            v-model="main_menu"
+            maxlength="30"
+          />
         </div>
         <div>
           <label for="operating_time">가게 운영 시간</label>
@@ -123,6 +165,7 @@
             type="text"
             v-model="closed_days"
             placeholder="예) 매주 화요일"
+            maxlength="20"
           />
         </div>
         <div>
@@ -131,7 +174,8 @@
             id="food_origin"
             type="text"
             v-model="food_origin"
-            placeholder="예)김치 - 국산"
+            placeholder="예)김치 - 국산 (최대 40자)"
+            maxlength="40"
           />
         </div>
         <div>
@@ -141,6 +185,7 @@
             type="text"
             v-model="break_time"
             placeholder="예) 오후 3시~4시"
+            maxlength="20"
           />
         </div>
         <button type="submit" class="btn">
@@ -177,18 +222,35 @@ export default {
       break_time: '',
       on_off: false,
 
+      searchWindow: {
+        display: 'none',
+        height: '300px',
+      },
+      address: '',
+      extraAddress: '',
+
+      visible: false,
       logMessage: '',
     };
   },
   computed: {
     isContentsValid() {
-      return this.intro.length <= 200;
+      return this.intro.length <= 300;
     },
   },
   methods: {
     async submitForm() {
       try {
+        if (
+          this.restaurant_name === '' ||
+          this.university === '' ||
+          this.category === ''
+        ) {
+          this.logMessage = '필수 입력사항을 입력하세요.';
+          return;
+        }
         const formData = new FormData();
+        this.location = this.address + ' ' + this.extraAddress;
         formData.append('restaurant_name', this.restaurant_name);
         formData.append('restaurant_phone', this.phone);
         formData.append('restaurant_loc', this.location);
@@ -219,8 +281,13 @@ export default {
           console.log('response', response);
         }
       } catch (error) {
-        console.log(error.response.data);
-        this.logMessage = error.response.data;
+        if (error.response) {
+          console.log(error.response.data);
+          this.logMessage = error.response.data;
+        } else {
+          this.logMessage = '에러발생';
+          console.log(error);
+        }
       }
     },
     fileSelector1() {
@@ -241,6 +308,46 @@ export default {
     fileSelector4() {
       this.restaurant_menu_image2 = this.$refs.restaurant_menu_image2.files[0];
       console.log('this.restaurant_menu_image2', this.restaurant_menu_image2);
+    },
+    execDaumPostcode() {
+      // eslint-disable-next-line
+      new daum.Postcode({
+        onComplete: data => {
+          if (data.userSelectedType === 'R') {
+            this.address = data.roadAddress;
+          } else {
+            this.address = data.jibunAddress;
+          }
+          /*상세주소 자동입력 일단 막아놈*/
+
+          // if (data.userSelectedType === 'R') {
+          //   if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+          //     this.extraAddress += data.bname;
+          //   }
+          //   if (data.buildingName !== '' && data.apartment === 'Y') {
+          //     this.extraAddress +=
+          //       this.extraAddress !== ''
+          //         ? `, ${data.buildingName}`
+          //         : data.buildingName;
+          //   }
+          //   if (this.extraAddress !== '') {
+          //     this.extraAddress = ` (${this.extraAddress})`;
+          //   }
+          // } else {
+          //   this.extraAddress = '';
+          // }
+          this.extraAddress = '';
+
+          this.$refs.extraAddress.focus();
+          this.searchWindow.display = 'none';
+        },
+        onResize: size => {
+          this.searchWindow.height = `${size.height}px`;
+        },
+        width: '100%',
+        height: '100%',
+      }).embed(this.$refs.searchWindow);
+      this.searchWindow.display = 'block';
     },
   },
 };
@@ -264,5 +371,11 @@ select {
   border-radius: 0px;
   border: 1px solid #dae1e7;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+#post-button {
+  width: 300px;
+  background-color: #708098;
+  color: white;
+  border: black;
 }
 </style>
