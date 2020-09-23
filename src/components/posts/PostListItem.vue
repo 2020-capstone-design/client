@@ -19,7 +19,7 @@
       </div>
       <span>
         <img
-          v-bind:src="`http://localhost:3000${postItem.restaurant_logo}`"
+          v-bind:src="`${postItem.restaurant_logo}`"
           width="30px"
           height="30px"
           onerror="this.src='https://image.flaticon.com/icons/svg/685/685681.svg'"
@@ -79,7 +79,7 @@
         />
         {{ postItem.restaurant_main_menu }}<br />
         <img
-          src="https://user-images.githubusercontent.com/49308628/93583450-d7650800-f9de-11ea-87d9-8bbaa484a25c.png"
+          src="https://user-images.githubusercontent.com/49308628/94024382-4e8d0880-fdf2-11ea-8e96-3fb7c466db2c.png"
           width="25"
           height="25"
         />
