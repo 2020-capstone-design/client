@@ -1,4 +1,4 @@
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+// const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
 module.exports = {
   devServer: {
@@ -6,18 +6,18 @@ module.exports = {
     disableHostCheck: true,
   },
   transpileDependencies: ['vuetify'],
-  configureWebpack: {
-    plugins: [
-      new HtmlWebpackExternalsPlugin({
-        externals: [
-          {
-            module: 'daum-postcode-api',
-            entry:
-              'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js',
-            global: 'daum-postcode-api',
-          },
-        ],
-      }),
-    ],
-  },
+  // configureWebpack: {
+  //   plugins: [
+  //     new HtmlWebpackExternalsPlugin({
+  //       externals: [
+  //         {
+  //           module: 'daum-postcode-api',
+  //           entry:
+  //             'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js',
+  //           global: 'daum-postcode-api',
+  //         },
+  //       ],
+  //     }),
+  //   ],
+  // },
 };
