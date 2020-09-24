@@ -3,6 +3,7 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 module.exports = {
   devServer: {
     overlay: false,
+    disableHostCheck: true,
   },
   transpileDependencies: ['vuetify'],
   configureWebpack: {
