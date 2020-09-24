@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style>
-select {
+#menu_category {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
