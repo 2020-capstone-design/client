@@ -5,6 +5,11 @@ module.exports = {
     overlay: false,
     disableHostCheck: true,
   },
+  configureWebpack: {
+    externals: {
+      Vue: 'vue',
+    },
+  },
   transpileDependencies: ['vuetify'],
   // configureWebpack: {
   //   plugins: [
