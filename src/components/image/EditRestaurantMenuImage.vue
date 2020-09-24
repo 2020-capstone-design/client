@@ -3,7 +3,7 @@
     <div class="edit-image-container">
       <h1 class="page-header">가게 메뉴 사진1 변경</h1>
       <img
-        v-bind:src="`http://localhost:3000${this.data.restaurant_menu_image1}`"
+        v-bind:src="`${this.data.restaurant_menu_image1}`"
         alt="이미지없음"
         width="200px"
         height="200px"
@@ -32,7 +32,7 @@
     <div class="edit-image-container">
       <h1 class="page-header">가게 메뉴 사진2 변경</h1>
       <img
-        v-bind:src="`http://localhost:3000${this.data.restaurant_menu_image2}`"
+        v-bind:src="`${this.data.restaurant_menu_image2}`"
         alt="이미지없음"
         width="200px"
         height="200px"

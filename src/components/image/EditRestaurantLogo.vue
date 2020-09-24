@@ -2,7 +2,7 @@
   <div class="edit-image-container">
     <h1 class="page-header">가게 로고 변경</h1>
     <img
-      v-bind:src="`http://localhost:3000${this.data.restaurant_logo}`"
+      v-bind:src="`${this.data.restaurant_logo}`"
       alt="이미지없음"
       width="200px"
       height="200px"
