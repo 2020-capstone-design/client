@@ -12,7 +12,8 @@ module.exports = {
         externals: [
           {
             module: 'daum-postcode-api',
-            entry: 'http://dmaps.daum.net/map_js_init/postcode.v2.js',
+            entry:
+              'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js',
             global: 'daum-postcode-api',
           },
         ],
