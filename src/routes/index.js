@@ -74,6 +74,11 @@ const router = new VueRouter({
       meta: { auth: false },
     },
     {
+      path: '/find',
+      component: () => import('@/views/FindIdOrPassword.vue'),
+      meta: { auth: false },
+    },
+    {
       path: '*',
       component: () => import('@/views/NotFoundPage.vue'),
     },
