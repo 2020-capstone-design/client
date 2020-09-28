@@ -22,7 +22,7 @@
           <input
             id="password"
             type="password"
-            placeholder="최대 20자"
+            placeholder="8자 이상 20자 이하, 문자, 숫자, 특수문자 포함"
             maxlength="20"
             v-model="password"
           />
@@ -62,11 +62,16 @@
           </span>
         </p>
         <div>
+          <label for="email">*이메일 </label>
+          <small class="input-email">아이디/비밀번호 찾기 시 사용됩니다.</small>
+          <input id="email" type="email" v-model="email" maxlength="50" />
+        </div>
+        <div>
           <label for="birthday">생년월일 </label>
           <input id="birthday" type="date" v-model="birthday" />
         </div>
         <div>
-          <label for="phone-number">휴대폰 번호 </label>
+          <label for="phone-number">*휴대폰 번호 </label>
           <input
             id="phonenumber"
             type="text"
@@ -101,6 +106,7 @@ export default {
       password: '',
       checkPassword: '',
       name: '',
+      email: '',
       birthday: '',
       phonenumber: '',
       // log
@@ -134,7 +140,9 @@ export default {
           this.owner_id === '' ||
           this.password === '' ||
           this.name === '' ||
-          this.passwordCheck === ''
+          this.email === '' ||
+          this.passwordCheck === '' ||
+          this.phonenumber === ''
         ) {
           this.logMessage = '필수 입력사항이 누락되었습니다.';
           return;
@@ -154,6 +162,7 @@ export default {
           owner_id: this.owner_id,
           password: this.password,
           name: this.name,
+          email: this.email,
           birthday: this.birthday,
           phonenumber: this.phonenumber,
         };
@@ -176,6 +185,7 @@ export default {
       this.password = '';
       this.passwordCheck = '';
       this.name = '';
+      this.email = '';
       this.birthday = '';
       this.phonenumber = '';
     },
@@ -208,4 +218,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.input-email {
+  font-size: 5px;
+}
+</style>

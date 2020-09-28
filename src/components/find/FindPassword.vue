@@ -8,7 +8,7 @@
           <input id="ownerId" type="text" v-model="ownerId" maxlength="20" />
         </div>
         <div>
-          <label for="ownerEmail">회원 이메일</label>
+          <label for="ownerEmail">가입 시 등록한 회원 이메일</label>
           <input
             id="ownerEmail"
             type="email"

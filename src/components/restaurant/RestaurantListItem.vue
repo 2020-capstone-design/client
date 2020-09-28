@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { deletePost, setOnOff } from '@/api/posts';
+import { deleteRestaurant, setOnOff } from '@/api/restaurants';
 export default {
   props: {
     postItem: {
@@ -117,7 +117,7 @@ export default {
         )
       ) {
         console.log('restaurantnum', this.postItem.restaurant_num);
-        await deletePost(this.postItem.restaurant_num);
+        await deleteRestaurant(this.postItem.restaurant_num);
         this.$emit('refresh');
       }
     },

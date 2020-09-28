@@ -14,6 +14,10 @@
           <input id="name" type="text" v-model="name" />
         </div>
         <div>
+          <label for="email">이메일</label>
+          <input id="email" type="text" v-model="email" />
+        </div>
+        <div>
           <label for="birth">생년월일</label>
           <input id="birth" type="date" v-model="birth" />
         </div>
@@ -48,6 +52,7 @@ export default {
   data() {
     return {
       owner_id: '',
+      email: '',
       name: '',
       birth: '',
       phone: '',
@@ -59,6 +64,7 @@ export default {
       try {
         const userData = {
           username: this.$store.state.username,
+          email: this.email,
           name: this.name,
           birth: this.birth,
           phone: this.phone,
@@ -100,6 +106,7 @@ export default {
     const { data } = await fetchUserInfo(this.$store.state.username);
     this.owner_id = data.user.owner_id;
     this.name = data.user.owner_name;
+    this.email = data.user.owner_email;
     this.birth = data.user.owner_birth;
     this.phone = data.user.owner_phone;
   },

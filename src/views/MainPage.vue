@@ -5,12 +5,12 @@
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
         <MainCarousel></MainCarousel>
-        <PostListItem
+        <RestaurantListItem
           v-for="postItem in postItems"
           :key="postItem.restaurant_num"
           :postItem="postItem"
           @refresh="fetchData"
-        ></PostListItem>
+        ></RestaurantListItem>
       </ul>
     </div>
     <router-link to="/add" class="create-button">
@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import PostListItem from '@/components/posts/PostListItem.vue';
+import RestaurantListItem from '@/components/restaurant/RestaurantListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import MainCarousel from '@/components/MainCarousel.vue';
-import { fetchPosts } from '@/api/posts';
+import { fetchRestaurants } from '@/api/restaurants';
 export default {
   components: {
-    PostListItem,
+    RestaurantListItem,
     MainCarousel,
     LoadingSpinner,
   },
@@ -42,7 +42,7 @@ export default {
       const { username } = {
         username: this.$store.state.username,
       };
-      const { data } = await fetchPosts(username);
+      const { data } = await fetchRestaurants(username);
       this.isLoading = false;
       this.postItems = data.restaurants;
     },

@@ -200,7 +200,7 @@
 </template>
 
 <script>
-import { createRestaurant } from '@/api/posts';
+import { createRestaurant } from '@/api/restaurants';
 
 export default {
   data() {
@@ -271,9 +271,6 @@ export default {
         formData.append('restaurant_food_origin', this.food_origin);
         formData.append('restaurant_break_time', this.break_time);
         formData.append('fk_owner_id', this.$store.state.username);
-        for (let key of formData.entries()) {
-          console.log(`${key}`);
-        }
 
         if (confirm('가게를 등록하시겠습니까?')) {
           const response = await createRestaurant(formData);
@@ -318,24 +315,7 @@ export default {
           } else {
             this.address = data.jibunAddress;
           }
-          /*상세주소 자동입력 일단 막아놈*/
 
-          // if (data.userSelectedType === 'R') {
-          //   if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-          //     this.extraAddress += data.bname;
-          //   }
-          //   if (data.buildingName !== '' && data.apartment === 'Y') {
-          //     this.extraAddress +=
-          //       this.extraAddress !== ''
-          //         ? `, ${data.buildingName}`
-          //         : data.buildingName;
-          //   }
-          //   if (this.extraAddress !== '') {
-          //     this.extraAddress = ` (${this.extraAddress})`;
-          //   }
-          // } else {
-          //   this.extraAddress = '';
-          // }
           this.extraAddress = '';
 
           this.$refs.extraAddress.focus();

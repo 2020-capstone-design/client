@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { editMenuImage1, editMenuImage2 } from '@/api/posts';
+import { editMenuImage1, editMenuImage2 } from '@/api/restaurants';
 
 export default {
   props: {

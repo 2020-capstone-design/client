@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { fetchPost, editPost } from '@/api/posts';
+import { fetchRestaurant, editRestaurant } from '@/api/restaurants';
 
 export default {
   data() {
@@ -141,7 +141,7 @@ export default {
       const restaurant_num = this.$route.params.restaurant_num;
       console.log('restaurant_num', restaurant_num);
       try {
-        await editPost(restaurant_num, {
+        await editRestaurant(restaurant_num, {
           restaurant_name: this.restaurant_name,
           restaurant_phone: this.restaurant_phone,
           restaurant_loc: this.restaurant_loc,
@@ -165,7 +165,7 @@ export default {
   async created() {
     const restaurant_num = this.$route.params.restaurant_num;
     console.log('created', restaurant_num);
-    const { data } = await fetchPost(restaurant_num);
+    const { data } = await fetchRestaurant(restaurant_num);
     console.log(data);
     this.restaurant_name = data.restaurant.restaurant_name;
     this.restaurant_phone = data.restaurant.restaurant_phone;

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { editOusideImage } from '@/api/posts';
+import { editOusideImage } from '@/api/restaurants';
 
 export default {
   props: {

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { fetchPost } from '@/api/posts';
+import { fetchRestaurant } from '@/api/restaurants';
 import EditRestaurantLogo from '@/components/image/EditRestaurantLogo.vue';
 import EditRestaurantOutsideImage from '@/components/image/EditRestaurantOutsideImage.vue';
 import EditRestaurantMenuImage from '@/components/image/EditRestaurantMenuImage.vue';
@@ -35,7 +35,7 @@ export default {
         restaurant_num: this.$route.params.restaurant_num,
       };
       console.log(restaurant_num);
-      const { data } = await fetchPost(restaurant_num);
+      const { data } = await fetchRestaurant(restaurant_num);
       this.data = data.restaurant;
     },
   },

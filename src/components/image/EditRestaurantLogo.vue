@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { editLogo } from '@/api/posts';
+import { editLogo } from '@/api/restaurants';
 export default {
   props: {
     data: {
