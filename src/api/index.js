@@ -17,8 +17,3 @@ function createInstanceWithAuth() {
 
 export const instance = createInstance();
 export const posts = createInstanceWithAuth();
-
-// GET - posts
-// POST - posts
-// PUT - posts {id}
-// DELETE - posts {id}
