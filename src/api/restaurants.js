@@ -32,7 +32,7 @@ function editRestaurant(restaurant_num, postData) {
 
 //가게 로고 변경 API
 function editLogo(logoData) {
-  return posts.patch('/v1/restaurant/update_restaurant_logo', logoData, {
+  return posts.patch('/restaurant/update_restaurant_logo', logoData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -41,7 +41,7 @@ function editLogo(logoData) {
 
 function editOusideImage(oustsideImageData) {
   return posts.patch(
-    '/v1/restaurant/update_restaurant_outside_image',
+    '/restaurant/update_restaurant_outside_image',
     oustsideImageData,
     {
       headers: {
@@ -52,32 +52,24 @@ function editOusideImage(oustsideImageData) {
 }
 
 function editMenuImage1(menuImage1) {
-  return posts.patch(
-    '/v1/restaurant/update_restaurant_menu_image1',
-    menuImage1,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+  return posts.patch('/restaurant/update_restaurant_menu_image1', menuImage1, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
     },
-  );
+  });
 }
 
 function editMenuImage2(menuImage2) {
-  return posts.patch(
-    '/v1/restaurant/update_restaurant_menu_image2',
-    menuImage2,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+  return posts.patch('/restaurant/update_restaurant_menu_image2', menuImage2, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
     },
-  );
+  });
 }
 
 //가게 오픈/마감 정보 수정 API
 function setOnOff(restaurant_num, isOpen) {
-  return posts.patch('/v1/restaurant/update_restaurant_isOpen', {
+  return posts.patch('/restaurant/update_restaurant_isOpen', {
     restaurant_num,
     isOpen,
   });
