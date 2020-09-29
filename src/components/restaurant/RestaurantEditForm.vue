@@ -39,13 +39,9 @@
             id="restaurant_intro"
             type="text"
             v-model="restaurant_intro"
+            placeholder="400자 이내"
+            maxlength="400"
           />
-          <p
-            v-if="!isContentsValid"
-            class="validation-text warning isContentTooLong"
-          >
-            Contents length must be less than 250
-          </p>
         </div>
         <div>
           <label for="restaurant_category">*가게 카테고리</label>
@@ -63,11 +59,12 @@
           </select>
         </div>
         <div>
-          <label for="restaurant_main_menu">가게 메인메뉴</label>
+          <label for="restaurant_main_menu">가게 대표메뉴</label>
           <input
             id="restaurant_main_menu"
             type="text"
             v-model="restaurant_main_menu"
+            maxlength="100"
           />
         </div>
         <div>
@@ -76,6 +73,7 @@
             id="restaurant_operating_time"
             type="text"
             v-model="restaurant_operating_time"
+            maxlength="100"
           />
         </div>
         <div>
@@ -84,6 +82,7 @@
             id="restaurant_closed_days"
             type="text"
             v-model="restaurant_closed_days"
+            maxlength="20"
           />
         </div>
         <div>
@@ -92,6 +91,7 @@
             id="restaurant_food_origin"
             type="text"
             v-model="restaurant_food_origin"
+            maxlength="40"
           />
         </div>
         <div>
@@ -100,6 +100,7 @@
             id="restaurant_break_time"
             type="text"
             v-model="restaurant_break_time"
+            maxlength="20"
           />
         </div>
         <button type="submit" class="btn">수정 완료</button>
@@ -131,15 +132,17 @@ export default {
       logMessage: '',
     };
   },
-  computed: {
-    isContentsValid() {
-      return this.restaurant_intro.length <= 200;
-    },
-  },
   methods: {
     async submitForm() {
+      if (
+        this.restaurant_name === '' ||
+        this.restaurant_university === '' ||
+        this.restaurant_category === ''
+      ) {
+        this.logMessage = '필수 입력사항이 누락되었습니다. 확인해주세요.';
+        return;
+      }
       const restaurant_num = this.$route.params.restaurant_num;
-      console.log('restaurant_num', restaurant_num);
       try {
         await editRestaurant(restaurant_num, {
           restaurant_name: this.restaurant_name,
@@ -154,7 +157,6 @@ export default {
           restaurant_food_origin: this.restaurant_food_origin,
           restaurant_break_time: this.restaurant_break_time,
         });
-        console.log('완료');
         this.$router.push('/main');
       } catch (error) {
         console.log(error);

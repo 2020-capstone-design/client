@@ -75,14 +75,8 @@
             type="text"
             row="4"
             v-model="intro"
-            maxlength="401"
+            maxlength="400"
           />
-          <p
-            v-if="!isContentsValid"
-            class="validation-text warning isContentTooLong"
-          >
-            Contents length must be less than 400
-          </p>
         </div>
         <div>
           <label for="logo">가게로고</label>
@@ -125,6 +119,7 @@
             type="text"
             v-model="operating_time"
             placeholder="예) 오전 10:00 ~ 오후 8:00"
+            maxlength="100"
           />
         </div>
         <div>
@@ -233,11 +228,6 @@ export default {
       logMessage: '',
     };
   },
-  computed: {
-    isContentsValid() {
-      return this.intro.length <= 300;
-    },
-  },
   methods: {
     async submitForm() {
       try {
@@ -273,9 +263,8 @@ export default {
         formData.append('fk_owner_id', this.$store.state.username);
 
         if (confirm('가게를 등록하시겠습니까?')) {
-          const response = await createRestaurant(formData);
+          await createRestaurant(formData);
           this.$router.push('/main');
-          console.log('response', response);
         }
       } catch (error) {
         if (error.response) {
@@ -289,22 +278,15 @@ export default {
     },
     fileSelector1() {
       this.logo = this.$refs.logo.files[0];
-      console.log('this.logo', this.logo);
     },
     fileSelector2() {
       this.restaurant_outside_image = this.$refs.restaurant_outside_image.files[0];
-      console.log(
-        'this.restaurant_outside_image',
-        this.restaurant_outside_image,
-      );
     },
     fileSelector3() {
       this.restaurant_menu_image1 = this.$refs.restaurant_menu_image1.files[0];
-      console.log('this.restaurant_menu_image1', this.restaurant_menu_image1);
     },
     fileSelector4() {
       this.restaurant_menu_image2 = this.$refs.restaurant_menu_image2.files[0];
-      console.log('this.restaurant_menu_image2', this.restaurant_menu_image2);
     },
     execDaumPostcode() {
       // eslint-disable-next-line
