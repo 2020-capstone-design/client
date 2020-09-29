@@ -22,11 +22,11 @@ export default {
         },
         {
           src:
-            'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            'https://user-images.githubusercontent.com/49308628/94505586-5dd2e280-0246-11eb-9518-1b4c579e2329.jpg',
         },
         {
           src:
-            'https://images.unsplash.com/photo-1473187983305-f615310e7daa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            'https://user-images.githubusercontent.com/49308628/94505441-1187a280-0246-11eb-89ef-8cc59b8ab141.jpg',
         },
       ],
     };

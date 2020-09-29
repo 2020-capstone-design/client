@@ -166,8 +166,7 @@ export default {
           birthday: this.birthday,
           phonenumber: this.phonenumber,
         };
-        const { data } = await registerUser(userData);
-        console.log(data.name);
+        await registerUser(userData);
         this.$router.push('/hello');
         this.initForm();
       } catch (error) {

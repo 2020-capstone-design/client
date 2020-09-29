@@ -5,7 +5,7 @@
         <div class="username">
           <label for="username">
             <img
-              src="https://image.flaticon.com/icons/svg/149/149071.svg"
+              src="https://user-images.githubusercontent.com/49308628/94505191-78f12280-0245-11eb-8d2d-622752ea9269.png"
               width="100"
               height="100"
             />

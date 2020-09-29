@@ -75,8 +75,7 @@ export default {
     async deleteItem() {
       try {
         if (confirm('해당 메뉴를 삭제하시겠습니까?')) {
-          const res = await deleteMenu(this.menuItem.menu_num);
-          console.log(res);
+          await deleteMenu(this.menuItem.menu_num);
           this.$router.go();
         }
       } catch (error) {
@@ -86,7 +85,6 @@ export default {
     async routeEditPage() {
       try {
         this.isEdit = !this.isEdit;
-        console.log(this.isEditView);
       } catch (error) {
         console.log(error);
       }
@@ -109,8 +107,7 @@ export default {
           newMenuIntro: this.menu_intro,
           newMenuPrice: this.menu_price,
         };
-        const response = await editMenu(menuData);
-        console.log(response);
+        await editMenu(menuData);
         this.isEditView = !this.isEditView;
         this.$router.go();
       } catch (error) {

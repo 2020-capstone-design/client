@@ -70,8 +70,7 @@ export default {
           phone: this.phone,
         };
         if (confirm('정보를 변강하시겠습니까?')) {
-          const response = await updateUser(userData);
-          console.log(response);
+          await updateUser(userData);
           this.$router.go();
           alert('성공적으로 변경되었습니다.');
         }

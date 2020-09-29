@@ -3,7 +3,7 @@
     <div>
       <div v-if="postItem.restaurant_isOpen === false">
         <img
-          src="https://www.flaticon.com/svg/static/icons/svg/1234/1234190.svg"
+          src="https://user-images.githubusercontent.com/49308628/94504413-ae950c00-0243-11eb-93bb-c9b4639be89f.png"
           width="50px"
           height="50px"
           @click="setOn"
@@ -11,7 +11,7 @@
       </div>
       <div v-else>
         <img
-          src="https://www.flaticon.com/svg/static/icons/svg/1234/1234189.svg"
+          src="https://user-images.githubusercontent.com/49308628/94504097-f9faea80-0242-11eb-8383-b65500344e68.png"
           width="50px"
           height="50px"
           @click="setOff"
@@ -22,7 +22,7 @@
           v-bind:src="`${postItem.restaurant_logo}`"
           width="30px"
           height="30px"
-          onerror="this.src='https://image.flaticon.com/icons/svg/685/685681.svg'"
+          onerror="this.src='https://user-images.githubusercontent.com/49308628/94504765-7c37de80-0244-11eb-8191-219d3ab03be3.png'"
           class="post-logo"
           @click="routeEditLogoPage"
       /></span>
@@ -31,7 +31,7 @@
       </span>
       <div class="post-contents">
         <img
-          src="https://image.flaticon.com/icons/svg/817/817382.svg"
+          src="https://user-images.githubusercontent.com/49308628/94504856-bd2ff300-0244-11eb-8767-8fbccee9fdfe.png"
           width="27"
           height="27"
         />
@@ -116,14 +116,12 @@ export default {
           '해당 가게를 삭제할 경우, 해당 가게와 관련된 정보들이 삭제됩니다.\n삭제하시겠습니까?',
         )
       ) {
-        console.log('restaurantnum', this.postItem.restaurant_num);
         await deleteRestaurant(this.postItem.restaurant_num);
         this.$emit('refresh');
       }
     },
     routeEditPage() {
       const restaurant_num = this.postItem.restaurant_num;
-      console.log('route', restaurant_num);
       this.$router.push(`/post/${restaurant_num}`);
     },
     routeMenuPage() {

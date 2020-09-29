@@ -60,9 +60,13 @@ export default {
         this.logMessage = response.data;
         this.$router.go();
       } catch (error) {
-        console.log(error);
-        console.log(error.response.data);
-        this.logMessage = error;
+        if (error.response) {
+          console.log(error.response.data);
+          this.logMessage = error.response.data;
+        } else {
+          this.logMessage = '에러발생';
+          console.log(error);
+        }
       }
     },
     fileSelector() {

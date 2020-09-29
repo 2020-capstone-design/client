@@ -93,7 +93,6 @@ export default {
           menu_price: this.menu_price,
           fk_restaurant_num: this.$route.params.restaurant_num,
         };
-        console.log(menuData);
         await createMenu(menuData);
         this.initForm();
         this.$router.go();
