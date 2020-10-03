@@ -63,7 +63,6 @@
         </p>
         <div>
           <label for="email">*이메일 </label>
-          <small class="input-email">아이디/비밀번호 찾기 시 사용됩니다.</small>
           <input id="email" type="email" v-model="email" maxlength="50" />
         </div>
         <div>
@@ -217,8 +216,4 @@ export default {
 };
 </script>
 
-<style>
-.input-email {
-  font-size: 5px;
-}
-</style>
+<style></style>
