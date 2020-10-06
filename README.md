@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://user-images.githubusercontent.com/49308628/95081681-d957f680-0754-11eb-8a68-009437b30bef.png" width="200px" height="200px" style="zoom:50%;" text-align="center" /></p>
 
-<p align="center"><img src="https://img.shields.io/badge/npm-6.14.8-red"/> <img src="https://img.shields.io/badge/vue--cli-4.4.6-blue"/> <img src="https://img.shields.io/badge/node-12.16.2-yellowgreen"/> </p>
+<p align="center"><img src="https://img.shields.io/badge/npm-6.14.8-red"/> <img src="https://img.shields.io/badge/vue--cli-4.4.6-blue"/> <img src="https://img.shields.io/badge/node-12.16.2-yellowgreen"/> <img src="https://img.shields.io/badge/license-MIT-green"/> </p>
 
 ### '오늘 뭐먹지?' 서비스
 
