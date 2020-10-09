@@ -65,7 +65,7 @@ const router = new VueRouter({
     },
     {
       path: '/download',
-      component: () => import('@/views/Download.vue'),
+      component: () => import('@/views/UserGuide.vue'),
       meta: { auth: true },
     },
     {
