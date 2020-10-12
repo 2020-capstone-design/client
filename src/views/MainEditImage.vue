@@ -1,14 +1,44 @@
 <template>
   <div>
-    <EditRestaurantLogo :data="data" @refresh="fetchData"></EditRestaurantLogo>
-    <EditRestaurantOutsideImage
-      :data="data"
-      @refresh="fetchData"
-    ></EditRestaurantOutsideImage>
-    <EditRestaurantMenuImage
-      :data="data"
-      @refresh="fetchData"
-    ></EditRestaurantMenuImage>
+    <v-container id="edit-image-container">
+      <v-row>
+        <v-expansion-panels focusable>
+          <v-expansion-panel>
+            <v-expansion-panel-header
+              >가게 로고 이미지 변경</v-expansion-panel-header
+            >
+            <v-expansion-panel-content>
+              <EditRestaurantLogo
+                :data="data"
+                @refresh="fetchData"
+              ></EditRestaurantLogo
+            ></v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header
+              >가게 외관 이미지 변경</v-expansion-panel-header
+            >
+            <v-expansion-panel-content>
+              <EditRestaurantOutsideImage
+                :data="data"
+                @refresh="fetchData"
+              ></EditRestaurantOutsideImage
+            ></v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header
+              >가게 메뉴 이미지 변경</v-expansion-panel-header
+            >
+            <v-expansion-panel-content>
+              <EditRestaurantMenuImage
+                :data="data"
+                @refresh="fetchData"
+              ></EditRestaurantMenuImage
+            ></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -45,4 +75,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#edit-image-container {
+  margin-top: 100px;
+  width: 50%;
+}
+</style>
