@@ -18,7 +18,34 @@
         </div>
         <div>
           <label for="restaurant_loc">가게 위치</label>
-          <input id="location" type="text" v-model="restaurant_loc" />
+          <input
+            type="button"
+            value="우편번호 찾기"
+            class="post-button"
+            @click="execDaumPostcode"
+          />
+          <div
+            ref="searchWindow"
+            :style="searchWindow"
+            style="border:1px solid;width:500px;margin:5px 0;position:relative"
+          >
+            <img
+              src="https://t1.daumcdn.net/postcode/resource/images/close.png"
+              id="btnFoldWrap"
+              style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
+              @click="searchWindow.display = 'none'"
+              alt="close"
+            />
+          </div>
+          <br />
+          <input type="text" v-model="address" placeholder="주소" />
+          <br />
+          <input
+            type="text"
+            v-model="extraAddress"
+            ref="extraAddress"
+            placeholder="상세주소"
+          />
         </div>
         <div>
           <label for="restaurant_university">*가게 근처 대학교</label>
@@ -130,6 +157,13 @@ export default {
       restaurant_food_origin: '',
       restaurant_break_time: '',
       logMessage: '',
+      searchWindow: {
+        display: 'none',
+        height: '300px',
+      },
+      address: '',
+      extraAddress: '',
+      visible: false,
     };
   },
   methods: {
@@ -143,6 +177,7 @@ export default {
         return;
       }
       const restaurant_num = this.$route.params.restaurant_num;
+      this.restaurant_loc = this.address + ' ' + this.extraAddress;
       try {
         await editRestaurant(restaurant_num, {
           restaurant_name: this.restaurant_name,
@@ -163,12 +198,33 @@ export default {
         this.logMessage = error.response.data.message;
       }
     },
+    execDaumPostcode() {
+      // eslint-disable-next-line
+      new daum.Postcode({
+        onComplete: data => {
+          if (data.userSelectedType === 'R') {
+            this.address = data.roadAddress;
+          } else {
+            this.address = data.jibunAddress;
+          }
+
+          this.extraAddress = '';
+
+          this.$refs.extraAddress.focus();
+          this.searchWindow.display = 'none';
+        },
+        onResize: size => {
+          this.searchWindow.height = `${size.height}px`;
+        },
+        width: '100%',
+        height: '100%',
+      }).embed(this.$refs.searchWindow);
+      this.searchWindow.display = 'block';
+    },
   },
   async created() {
     const restaurant_num = this.$route.params.restaurant_num;
-    console.log('created', restaurant_num);
     const { data } = await fetchRestaurant(restaurant_num);
-    console.log(data);
     this.restaurant_name = data.restaurant.restaurant_name;
     this.restaurant_phone = data.restaurant.restaurant_phone;
     this.restaurant_loc = data.restaurant.restaurant_loc;
