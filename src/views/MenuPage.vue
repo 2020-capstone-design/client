@@ -8,6 +8,12 @@
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
       <ul v-else>
         <MenuAddForm></MenuAddForm>
+        <br />
+        <p id="menu-text">
+          메인메뉴 > 세트메뉴 > 사이드메뉴 > 음료 순 , 낮은 가격 순으로
+          정렬됩니다.
+        </p>
+        <br />
         <MenuListItem
           v-for="menuItem in menuItems"
           :key="menuItem.menu_num"
@@ -58,4 +64,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#menu-text {
+  text-align: center;
+  font-family: 'Jua', sans-serif;
+  font-size: 0.8em;
+  color: #364f6b;
+}
+</style>
