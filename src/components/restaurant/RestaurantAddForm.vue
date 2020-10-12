@@ -28,8 +28,7 @@
           <input
             type="button"
             value="우편번호 찾기"
-            class="버튼"
-            id="post-button"
+            class="post-button"
             @click="execDaumPostcode"
           />
           <div
@@ -321,23 +320,5 @@ export default {
 }
 .btn {
   color: white;
-}
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: url('https://t1.daumcdn.net/cfile/tistory/99761B495C84AA8716')
-    no-repeat 95% 50%;
-  width: 40%;
-  padding: 15px 15px;
-  border-radius: 0px;
-  border: 1px solid #dae1e7;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-}
-#post-button {
-  width: 300px;
-  background-color: #708098;
-  color: white;
-  border: black;
 }
 </style>
