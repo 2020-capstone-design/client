@@ -71,6 +71,10 @@
 
 <img src="https://user-images.githubusercontent.com/49308628/95081230-3901d200-0754-11eb-8bdd-311c147c2c69.gif" width="400px" height="400px"/> </span>
 
+**이용 가이드 페이지**
+
+<img src="https://user-images.githubusercontent.com/49308628/96004397-4fa3d980-0e76-11eb-818a-a0facf069db5.gif" width="400px" height="400px"/> 
+
 -----
 
 ### Usage
