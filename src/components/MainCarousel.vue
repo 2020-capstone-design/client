@@ -14,6 +14,10 @@ export default {
       items: [
         {
           src:
+            'https://user-images.githubusercontent.com/49308628/97386967-62a7b680-1918-11eb-86d2-ecad12440909.png',
+        },
+        {
+          src:
             'https://user-images.githubusercontent.com/49308628/92195011-f1fb9500-eea6-11ea-8f67-a9e27b3bcf80.png',
         },
         {
@@ -23,10 +27,6 @@ export default {
         {
           src:
             'https://user-images.githubusercontent.com/49308628/94505586-5dd2e280-0246-11eb-9518-1b4c579e2329.jpg',
-        },
-        {
-          src:
-            'https://user-images.githubusercontent.com/49308628/94505441-1187a280-0246-11eb-89ef-8cc59b8ab141.jpg',
         },
       ],
     };
