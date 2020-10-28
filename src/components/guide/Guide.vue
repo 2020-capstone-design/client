@@ -96,6 +96,6 @@ export default {};
 <style>
 .guide {
   margin: 10px;
-  width: 700px;
+  width: 70%;
 }
 </style>

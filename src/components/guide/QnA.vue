@@ -6,7 +6,12 @@
           <v-expansion-panel-header
             >앱에서 어떻게 보이나요?</v-expansion-panel-header
           >
-          <v-expansion-panel-content> </v-expansion-panel-content>
+          <v-expansion-panel-content>
+            <img
+              src="https://user-images.githubusercontent.com/49308628/97386967-62a7b680-1918-11eb-86d2-ecad12440909.png"
+              class="guide"
+            />
+          </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
           <v-expansion-panel-header
