@@ -16,7 +16,7 @@ export default {
 #sample-btn {
   position: relative;
   left: 50%;
-  margin-top: 20px;
+  margin: 20px;
   transform: translateX(-50%);
   background-position: left;
   background-size: 200%;
