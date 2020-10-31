@@ -6,7 +6,7 @@
 export default {
   methods: {
     alert() {
-      alert('샘플용 아이디 : test, 비밀번호 : test@1');
+      alert('샘플용 아이디 : test, 비밀번호 : testpwd@1');
     },
   },
 };
