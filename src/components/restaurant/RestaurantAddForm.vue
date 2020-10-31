@@ -97,7 +97,7 @@
             <option value="족발/보쌈">족발/보쌈</option>
             <option value="피자">피자</option>
             <option value="치킨">치킨</option>
-            <option value="분식">패스트푸드</option>
+            <option value="패스트푸드">패스트푸드</option>
             <option value="찜/탕">찜/탕</option>
             <option value="카페&디저트">카페&디저트</option>
           </select>
